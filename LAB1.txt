@@ -33,3 +33,51 @@ bądź
 
 tak instalujemy pakiecik: 
 > install.packages("nazwa_pakietu")
+
+
+* PRZYKŁADOWE ZBIORY DANYCH W R *
+- wyświetlenie listy aktualnie dostępnych baz danych:
+> data()
+- wyświetlenie danych znajdujących się w wybranej bazie: 
+> Orange
+- sprawdzenie rozmiaru bazy danych, wywołaj funkcję dim():
+> dim(Orange)
+> dim(Orange)[1]  # liczba obserwacji
+> dim(Orange)[2]  # liczba zmiennych.
+
+Aby uzyskać nazwy zmiennych znajdujących się w bazie, wystarczy wywołać funkcję names():
+> names(Orange)
+
+* Podłączanie (odłączanie) bazy danych do R *
+W bazie Orange są  zmienne: Tree, age, circumference(obwód). Aby dokonać ich analizę, najpierw podłączyć trzeba bazę do R:
+> attach(Orange)
+> Tree # teraz już mamy dostęp do zmiennej Tree.
+Po skończonej pracy bazę należy odłączyć:
+> detach(Orange)
+> Tree # R nie rozpoznaje już obiektu Tree.
+
+// Można analizować zmienne z bazy bez podłączania jej - wystarczy odwoływać się do nich poprzez nazwę bazy, znak $ oraz nazwę zmiennej: 
+> Orange$Tree  # ten zapis daje nam dostęp do zmiennej Tree.'
+
+
+* POMOC W R:  HELPER *
+> help(mean)
+> ?sd
+ - jeżeli nie znamy dokładnie nazwy funkcji, ale wiemy, jakiej tematyki dotyczy, możemy szukać przy pomocy użycia polecenia help.search lub ??, np.
+> help.search("empirical")
+> ??density.
+
+
+* STRUKTURA DANYCH W R 	*
+Podstawwoym typem danych jest wektor = uporządkowany ciąg wilekości ( niekoniecznie liczbowych). 
+> atan(pi)	+> 	[1] 1.262627
+
+"[1]" widniejąca przed powyższym wnikiem oznacza, że R interpretuje wynik powyższsej operacji jako wektor- indeks pierwszego elementu wektora znajdującego sięw pierwszym wieszu.
+
+exmp:
+>1:40
+[1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22
+[23] 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
+
+
+* WEKTORY - VERTICES *
