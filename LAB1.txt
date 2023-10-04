@@ -81,3 +81,84 @@ exmp:
 
 
 * WEKTORY - VERTICES *
+Funkcja c() umożliwia tworzenie wektora z pojedynczych elementów oraz innych wektorów:
+> c(1,5,7,9,12)
+> c(5:24, 23, 1:4)
+
+Uwaga:
+Składowymi wektora mogą być zarówno liczby, jak i ciągi znaków.
+> c(1, 4, 6, "zielony", "niebieski", "biały")
+
+
+* NAZWY OBIEKTÓW W R, SEKWENCJE *
+Każdemu obiektowi w R można przypisać nazwę. Do nadawania nazwy elementom danego obiektu służy funkcja names():
+> kolory=c(4,5,24,1)
+> names(kolory)=c("zielony", "niebieski", "biały", + "czerwony")
+> kolory.
+
+- Sekwencje (ciągi), będące elementami wektora, można tworzyćza pomocą operatora : bądź funkcji seq.
+> 30:10
+> seq(1,45,by=3)
+> c(seq(from=1, by=3, length=15),1:10)
+
+* 	REPLIKACJE 	*
+Środowisko R umożliwia replikację, czyli powielanie danych. *Funckja rep(). 1szy argument (najczęśćiej wektor) - to ten który ma zostać powielony. Kolejne (opcjonalne) argumenty to następujące nieujemne liczby całkowite:
+ - times = ilość powtórzeń obiektu
+ - length.out = długość wektora wynikowego,
+ - each= ilość powtórzeń każdego elementu wektora źródłowego.
+EXAMPLE:
+> rep(5:8,4)		5678567856785678
+> rep(5:8,each=4) # inny wynik niż poprzednio. 	5555666677778888
+> rep(5:8,length.out=10)	5678567856
+
+
+* 	ZMIENNE 	*
+W środowisku R mamy możliwość definiowania zmiennych i odwoływania się do nich poprzez nazwę. Operatorami za których pomocą przypisujemy do zmiennej określoną wartość to: <- oraz = , analogicznie działa także funkcja assign():
+> x<-c(4:10)		==	 x: int [1:7] 4 5 6 7 8 9 10
+> y=c("jeden", "dwa")	==	y: chr [1:2] "jeden" "dwa"
+> assign("z", c(x,y))	==	z: chr [1:9] "4" "5" "6" "7" "8" "9" "10"
+
+teraz aby wyświetlić wynik przypisania: wywołaj ją poprzez jej nazwę
+> x		== [1] 4 5 6 7 8 9 10
+> y[2]		== [1] "dwa"
+> z[5]		== [1] "8"
+
+
+*	MACIERZE 	*
+Tworzenie macierzy umożliwia funkcja matrix(): -parameters:
+- wektor, który inicjuje zawartość macierzy,
+- liczba wierzsy,
+- liczba kolmn;
+EXAMPLE:
+ > macierz<-matrix(seq(1:4),3,4) --> takie coś below:
+1	4	3	2
+2	1	4	3
+3	2	1	4
+
+Odwołujemy się tak o:
+>macierz[1,3] # element z 1 wiersza i  3 kolumny
+>macierz[1,1] # caly pierwzsy wiersz macierzy
+>macierz[,3]  # cala trzecia kolumna macierzy
+
+
+*		TABLICE		*
+FUNKCJA array(). : parametry:
+-wektor, inicjuje zawartość tablicy:
+-wektor, który określa wymiar tablicy:
+> tablica1<-array(seq(1:4), c(3,4))
+> tablica2<-array(c(1:5),c(2,2,2))
+
+view(tablica1)
+1	4	3	2
+2	1	4	3
+3	2	1	4
+
+Odwołanie do poszczególnych elementów tablicy jest analogiczne
+jak w przypadku macierzy:
+> tablica1[2,2]
+> tablica1[1:2,] # wiersze w tablicy od 1 do 2
+> tablica1[,1]
+> tablica2[2,2,2]
+
+
+
