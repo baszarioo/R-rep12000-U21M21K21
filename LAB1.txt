@@ -192,3 +192,14 @@ Służy do tego funkcja sort():
 *	IMPORT DANYCH Z PLIKU		*
 importing data from external files is possible in R thanks to read.table() function, that reads file in table format and creates the dataframe on based on that table. Every single observation is corresponding(odpowiada) to the 1line in file, and the variable = is relatable to the column.
 Important parameters:	// IMPORTANTE:...
+	* file = first parameter, determines a file name, if full path isn't provided, the file is being downloaded from R working directory.
+	* header: TRUE/FALSE = determines, whether the headings (column names) are located at a first row, on default set to FALSE.
+	* sep = it defines  the field separator, that means the sign between next values within(w obrębie) observations, ex. ";" or "," (on default = none ""),
+	* dec = it defines the sign used to divide decimal values(części dziesiętne), on default "."
+
+For example lets include to our working category file: "Warzywniak.txt", and after that lets input its content.
+>read.table("Warzywniak.txt", header=TRUE)
+
+Analogous/analogical/corresponding function read.csv is being served to read in/input files with a .csv extension.
+
+* 	EKSPORT DANYCH DO PLIKU		*
