@@ -162,3 +162,33 @@ jak w przypadku macierzy:
 
 
 
+*	LISTY		*
+lista pozwala łączyć obiekty różnych typów. Konstruktorem listy = funkcja list().
+EXAMPLE:
+> przedmiot<-c("piłka", "skrzynia")
+> kolor<-c("czerwony", "zielony")
+> waga<-c(2,8)
+> lista<-list(przedmiot, kolor, waga)
+> names(lista)<-c("przedmiot", "kolor", "waga")
+
+you can refer to the lsit elements using their name or position on list:
+> lista[2]
+> lista$waga
+> lista$waga[which(lista$przedmiot=="piłka")]
+< lista$kolor[lista$przedmiot=="skrzynia"]
+- the compare operator '==' is very useful there, as it allows us to obtain these elements from list that meet a condition.
+
+
+* 	RAMKI DANYCH		*
+Data frame is a list, that allows us to join vertices of the same length(columnally). It is especially usefull to represent empiprical data( data that comes from experience and observations, x experiments), because of its structure that is same as (odpowiada / suits (the) ) to the table in database.
+
+*	SORTOWANIE DANYCH	 *
+Wektor można posortować w kolejności rosnącej bądź malejącej. 
+Vertices can be sorted in Ascending or Descending order.
+Służy do tego funkcja sort():
+>sort(kolory) # default sort in order rosnący =Ascending
+>sort(kolory, decreasing = TRUE) # now the order is malejący= Descending.
+
+*	IMPORT DANYCH Z PLIKU		*
+importing data from external files is possible in R thanks to read.table() function, that reads file in table format and creates the dataframe on based on that table. Every single observation is corresponding(odpowiada) to the 1line in file, and the variable = is relatable to the column.
+Important parameters:	// IMPORTANTE:...
