@@ -203,3 +203,19 @@ For example lets include to our working category file: "Warzywniak.txt", and aft
 Analogous/analogical/corresponding function read.csv is being served to read in/input files with a .csv extension.
 
 * 	EKSPORT DANYCH DO PLIKU		*
+The data analyzed during work can be saved in the file with the usage of function: write.table(). The data that is nor a dataframe, nor a matrix is being converted into frame format.
+IMPORTANT: WICHTIG! PARAMETERS:
+	* x = first parameter, determines object, which we want to save,
+	* file = file name, in which the data will be saved; if the full path isn't provided, file is beig saved into the working directory, "" means that the output wil lbe printed in a - R console
+	* append: TRUE/FALSE = allows/enables to add in writing/join data to an existing file, if set to TRUE; otherways a file with the same name will be destructed; on default set to FALSE.
+ 	* sep = it defines  the field separator, that means the sign between next values within(w obrębie) observations, ex. ";" or "," (on default = none ""),
+	* dec = it defines the sign used to divide decimal values(części dziesiętne), on default "."
+
+EXAMPLE: 
+> dane<-data.frame(v1=c(1,2,3), v2=c("a","b","c"))
+> write.table(dane, file = "dane.txt", sep=",")
+Analogous/etc function write.csv serves to save a data in a file with a .csv extension.
+
+*		WłASNE FUNKCJE W R 		*
+R Enviroment enables definig your own functions. It takes place/undergoes by bringing function name under its definition(przypisać do jej definicji)
+
