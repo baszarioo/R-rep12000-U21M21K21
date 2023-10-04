@@ -8,3 +8,28 @@
  > log(9, base=3)+sqrt(64)
  > exp(1)+0.25
  > abs(cos(pi))
+
+Aby uruchmić poecenie / grupę poeceń znajdujące się w skrypcie, wybierz trzecią od lewej strony ikonkę znajdującą się pod menu:
+
+* PAKIETY R * 
+Pakiet = zbiór funkcji, plików danych i plików pomocy powiązanych ze sobą.
+Podzas instalacji R instalowane są również standardowe pakiety.
+Nie wszystkie są jednak ładowane domyślnie.
+Te domyślnie załądowane można obejrzeć, wpisując w okno konsoli:
+> getOpition("defaultPackages")
+List aktualnie załadowanych pakietów: 
+> (.packages())
+istę wszystkich dostępnych pakietów, które są zainstalowane ( nie wszystkie załadowane).
+> (.packages(all.available=TRUE))
+bądź
+> library()		# otwiera nam nowe okno z listą pakietów możliwych do załadowania.
+
+
+* ŁADOWANIE PAKIETÓW W R *
+1) obejrzeć podstawowe informacje na temat wybranego pakietu, można tak o:
+> library(help="stats")
+2) załadowanie pakietu do R, tak o: 
+> library(grid)
+
+tak instalujemy pakiecik: 
+> install.packages("nazwa_pakietu")
