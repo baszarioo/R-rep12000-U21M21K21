@@ -217,5 +217,23 @@ EXAMPLE:
 Analogous/etc function write.csv serves to save a data in a file with a .csv extension.
 
 *		WłASNE FUNKCJE W R 		*
-R Enviroment enables definig your own functions. It takes place/undergoes by bringing function name under its definition(przypisać do jej definicji)
+R Enviroment enables definig your own functions. It takes place/undergoes by bringing function name under its definition(przypisać do jej definicji):
+nazwa<-function(arg1, arg2, ...) wyrażenie/expression
+nazwa<-function(arg1, arg2, ...) { block of expressions/ blok wyrażen}
 
+If in a block there wont be a trigger/call of return() function, then(wówczas) it will return last counted value. We call function using its name, and parameters are provided in a curly brackets (arguments)		# parantheses== {}
+EXAMPLE: 
+	Let us define a function returning a sum of two numbers from input.
+> suma<-function(a,b) a+b
+> suma(12,5)
+[1] 17
+> kwadrat_sumy<-function(a,b) {
++ c<-a+b		# + stands for next line of input..
++ return(c ^ 2)
++ }
+> kwadrat_sumy(12,5)
+[1] 289
+
+
+* 	PĘTLE: 	FOR		* 26/33.
+R environment....
