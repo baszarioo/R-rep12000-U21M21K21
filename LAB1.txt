@@ -1,0 +1,10 @@
+*Polecenia R wpisuje sięw konsoli po znaku '>', np.
+> 7 -4
+*Komentarzse wpisuje się w konsoli po znaku '#', np.
+> # to jest komentarz
+*R jako kalkulator.
+ - funkcje: +,-,*,/,^(potęga), exp(funkjca eksponencjalna), log (f. logarytmiczna), sqrt(pierwiastek kwadratowy), abs (wartosc bezwzgledna), itp.
+ > log(16,4)
+ > log(9, base=3)+sqrt(64)
+ > exp(1)+0.25
+ > abs(cos(pi))
