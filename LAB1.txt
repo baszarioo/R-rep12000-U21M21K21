@@ -269,3 +269,5 @@ EXAMPLE: Let's analyze circuits/perimeters (obwody) of trees from 'Orange databa
 UWAGA:BEWARE/CAUTION:ATTENZIONE = comparison of two numbers requires an usage of two equal signs: ==.
 
 *		CONDITIONAL SENTENCES ON VECTORS 		*
+Deployment/usage of loop in example before is not the most effective answer/solution. Threfore in R exists conditional instruction that allows us to work/operate on whole vectors:
+ifelse(condition, instruction_when_TRUE, instruction_when_FALSE)
