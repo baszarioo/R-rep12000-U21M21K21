@@ -239,4 +239,15 @@ EXAMPLE:
 R environment allows us to construct LOOPS, exactly it is what we know as cyclic execution of sequence/chain(ciąg) of instructions for selected amount of times, for every single element from the chain. It is happening in the block sequence:
 for(variable in chain) instruction
 for(variable in chain) {sequence of instructions}
-EXAMPLE: Let sum up 
+EXAMPLE: Let sum up age of trees that are present in a database named" Orange.
+> attach(Oragne)
+> suma_wieku=0
+> n=length(age)
+> for(i in 1:n) {
++ suma_wieku=suma_wieku+age[i]
++ }
+> suma_wieku
+> sum(age) #to samo
+
+
+*		INSTRUKCJE WARUNKOWE/ CONDITIONS 		*
