@@ -251,3 +251,8 @@ EXAMPLE: Let sum up age of trees that are present in a database named" Orange.
 
 
 *		INSTRUKCJE WARUNKOWE/ CONDITIONS 		*
+R environment allows us also to construct "conditional instrucitons", which can allow us to make different calculations when depending from that, if defined logical expression is true, or false. It happens in the block of:
+if (condition) instruction
+if (condition) instruction else other_instruction.
+
+EXAMPLE:
