@@ -236,4 +236,7 @@ EXAMPLE:
 
 
 * 	PĘTLE: 	FOR		* 26/33.
-R environment....
+R environment allows us to construct LOOPS, exactly it is what we know as cyclic execution of sequence/chain(ciąg) of instructions for selected amount of times, for every single element from the chain. It is happening in the block sequence:
+for(variable in chain) instruction
+for(variable in chain) {sequence of instructions}
+EXAMPLE: Let sum up 
