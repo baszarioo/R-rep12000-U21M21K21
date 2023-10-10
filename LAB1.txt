@@ -255,4 +255,17 @@ R environment allows us also to construct "conditional instrucitons", which can 
 if (condition) instruction
 if (condition) instruction else other_instruction.
 
-EXAMPLE:
+EXAMPLE: Let's analyze circuits/perimeters (obwody) of trees from 'Orange database, through/by outputing chosen/appropriate comments.
+> n=dim(Orange)[1]
+> srednia=mean(circumference)
+> for (i in 1:n){
++ if(circumference[i]==srednia)
++ print("Obwod rowny sredniej")
++ else if (circumference[i]==srednia)
++ print ("Obwod rowny sredniej")
++ else print("Obwod mniejszy niz srednia")
+}
+
+UWAGA:BEWARE/CAUTION:ATTENZIONE = comparison of two numbers requires an usage of two equal signs: ==.
+
+*		CONDITIONAL SENTENCES ON VECTORS 		*
