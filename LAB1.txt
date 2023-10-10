@@ -271,3 +271,12 @@ UWAGA:BEWARE/CAUTION:ATTENZIONE = comparison of two numbers requires an usage of
 *		CONDITIONAL SENTENCES ON VECTORS 		*
 Deployment/usage of loop in example before is not the most effective answer/solution. Threfore in R exists conditional instruction that allows us to work/operate on whole vectors:
 ifelse(condition, instruction_when_TRUE, instruction_when_FALSE)
+
+EXAMPLE:
+> ifelse(circumference>srednaia, "Obwod wiekszy niz srednia",
++ ifelse(circumference==srednia, "Obwod rowny sredniej", "Obwod mniejszy niz srednia"))
+> detach(Orange).
+
+# seq(1,45,by=3)	== seq(1,45,3)	!= seq(from=1, by=3, length=5)	!= seq(from=1, length=15, by=3)
+
+
