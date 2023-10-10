@@ -310,3 +310,13 @@ Actual list/schedule [wykaz] of executed statements is accessible through execut
 
 
 *		THE R User's WORKSPACE		 *
+Workspace contains all the information about all objects created in a section. It can be saved in a .RData file, selecting option from the menu: 'Plik-> zapisz obszar roboczy...'. It is useful especially, when in the next session we would like to work on the same data.
+To load/enter workspace from last saved session, user has to select a file from menu: 'Plik->Zaladuj obszar roboczy...'. By loading the workspace the user comes back to the stage/state of file saved in a read file.
+List of session's objects is available after entering one of the commands:
+> objects()
+> ls()
+
+!.Rhistory and .RData files containing history of commands and workspace, are saved and loaded from currently set working directory.
+
+
+*		
