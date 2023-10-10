@@ -300,3 +300,13 @@ In R we also have a possibility to construct a loop of different types, like: wh
 
 
 * 		USER COMMANDS/ORDERS History in R 		*
+After finishing work in R, we can save in a .Rhistory file, all of our recently used commands. It is especially/particularly useful, when we work on the one same project for a long time, and we want to execute the same statement over and over, only with different parameters, also after closing session. 
+It is possible through selector in the menu:
+'Plik -> zapisz historie...
+To read a history of orders from recently saved session, you have to select appropriate file in the menu:
+'Plik -> zaladuj historie...
+Actual list/schedule [wykaz] of executed statements is accessible through executing function: 
+> history()
+
+
+*		THE R User's WORKSPACE		 *
