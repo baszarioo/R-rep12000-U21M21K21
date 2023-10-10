@@ -284,5 +284,19 @@ EXAMPLE:
 
 * 		WHILE, REPEAT - LOOPS 		*
 In R we also have a possibility to construct a loop of different types, like: while & repeat. While loop is executing orders/commands. The repeat loop instead is executing instructions until, we stop it by our command.
+ EXAMPLE: While loop printing the square result of the numbers from 1:10:
+> i<-1
+> while(i<=10){
++ print(i^2)
++ i<-i+1
++ }
+ EXAMPLE: repeat loop that outputs the square result of the same numbers.
+> i<-1
+> repeat {
++ print(i^2)
++ i<-i+1
++ if(i>10) break
++ }
 
 
+* 		USER COMMANDS/ORDERS History in R 		*
