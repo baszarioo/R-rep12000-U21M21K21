@@ -319,4 +319,14 @@ List of session's objects is available after entering one of the commands:
 !.Rhistory and .RData files containing history of commands and workspace, are saved and loaded from currently set working directory.
 
 
-*		
+*		SUMMARY/ RECAP of R's potential/Features 		*
+R in view of it's usage to statistical calculations,  is often called a statistical packet. But it's features are much more general. Users of R all the world are developing it, by creating new packets and sharing theirs achievements, i.e. when generating 3d animations, creating video games, automating tasks(i.e. generating raports) etc. To touch it by your own hand, you can execute these orders:
+> demo(graphics)
+> demo(persp)
+> demo(Japanese)
+
+>install.packages("rgl") # instalujemy pakiet 'rgl'
+>library(rgl)
+>demo(rgl)
+
+Free access and unlimited 
