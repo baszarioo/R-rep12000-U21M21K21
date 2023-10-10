@@ -100,6 +100,8 @@ Każdemu obiektowi w R można przypisać nazwę. Do nadawania nazwy elementom da
 > 30:10
 > seq(1,45,by=3)
 > c(seq(from=1, by=3, length=15),1:10)
+== 1 4 7 10 13 16 19 22 25 28 31 34 37 40 43
+   1 2 3 4 5 6 7 8 9 10
 
 * 	REPLIKACJE 	*
 Środowisko R umożliwia replikację, czyli powielanie danych. *Funckja rep(). 1szy argument (najczęśćiej wektor) - to ten który ma zostać powielony. Kolejne (opcjonalne) argumenty to następujące nieujemne liczby całkowite:
@@ -278,5 +280,9 @@ EXAMPLE:
 > detach(Orange).
 
 # seq(1,45,by=3)	== seq(1,45,3)	!= seq(from=1, by=3, length=5)	!= seq(from=1, length=15, by=3)
+
+
+* 		WHILE, REPEAT - LOOPS 		*
+In R we also have a possibility to construct a loop of different types, like: while & repeat. While loop is executing orders/commands. The repeat loop instead is executing instructions until, we stop it by our command.
 
 
