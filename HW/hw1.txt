@@ -5,3 +5,24 @@
 >help("read.csv")
 
 >df <- read.csv("C:\\home\\..., header = FALSE)  # new header creatione.
+
+Schulübung1: [Esercizi scolastico1]
+Display first 6 rows from read dataFrame: [ESPORRE PRIMI SIEI RIGHE DALLA TABELLA DI LETTURA]: 
+> head(df, n=6)
+ESERCIZI 2:
+Display only the column that contains the weight: [VISUAIZZA SOLO LA COLONNA DEL PESO]:
+> weight_column <- df$Peso
+> print(weight_column)
+ESERCIZI 3:
+Determine/figure a BMI for every single kid and save data under the bmi variable/name[ DETERMINARE UN INDICE DI MASSA CORPOREA PER OGNI BAMBINI]:
+> df$bmi <- df$Peso / (df$Altezza^2)
+> print(df)
+|| if height is cm's [ SE L'ALTEZZA È IN CENTIMETRI ]:
+> df$height_meters <- df$Altezza / 100
+> df$bmi <- df$weight / (df$height_meters^2)
+#Remove the 'height_meters' column if you no longer need it
+> df <- df[, !(names(df) %in% c("height_meters"))]
+> print(df)
+ESERCIZI4: Sort the bmi values in descending order: [ORDINA I VALORI DELL'IMC IN ORDINE DECRESCENTE]:
+df <- df[order(df$bmi, decreasing=TRUE), ]
+print(data)
