@@ -1,0 +1,7 @@
+>read.csv("C:\\home\\...)
+||
+>df <- read.csv("C:\\home\\...)
+>View(df)
+>help("read.csv")
+
+>df <- read.csv("C:\\home\\..., header = FALSE)  # new header creatione.
