@@ -26,3 +26,29 @@ Determine/figure a BMI for every single kid and save data under the bmi variable
 ESERCIZI4: Sort the bmi values in descending order: [ORDINA I VALORI DELL'IMC IN ORDINE DECRESCENTE]:
 df <- df[order(df$bmi, decreasing=TRUE), ]
 print(data)
+
+
+
+Zad2:/Compito2: Install foreign package and get to know with read.spss function. Using it read example file of program IBM SPSS Statistics named: Employee data.sav. Get variable names from that file. 	[ INSTALLA IL PACCHETTO foreign E IMPARA A CONOSCERE CON LA FUNZIONE read.spss..  UTIIZZANDOLO LEGGERE IL FILE DI ESEMPIO DEL PROGRAMMA ibm spss statistics DENOMINATO: employee data.sav... OTTENERE I NOMI DELLE VARIABILI DE TALE FILE.]
+> install.packages("foreign")
+> library(foreign)
+> file_path <- "employee data.sav"
+> data <-read.spss(file_path, to.data.frame=TRUE)
+> variable_names <- names(data)
+> print(variable_names)
+
+a) Create a variable earning_level, that accepts next proper values:	[salary=stipendio].
+	- low, if salary takes values ranging from 0 to 25000 (including). //bassa-o
+	- average, if salary takes values ranging from 25000 to 35000 (including). //media-o
+	- high, if salary takes values higher than 35000 // alta-o
+> data$earning_level <- ifelse(data$salary <= 25000, "low", ifelse(data$salary <= 35000, "average", "high"))
+> print(data)
+
+b) How much observations in respective[poszczególne] groups are defined by variable earning_level?
+> earning_level_counts <- table(data$earning_level)
+> print(earning_level_counts)
+
+c) Write/Save a variable earning_level in a earnings.txt file.		[SCRIVERE/SALVARE UNA VARIABILE earning_level IN UN FILE .txt utili]
+> write.table(data$earning_level, file = "earnings.txt", col.names=FALSE, row.names=FALSE)
+# Confirm that the data has been saved: 	[CONFERMARE CHE I DATI SONO STATI SALVATI:]
+> cat("The 'earning_level' variable has been saved to 'earnings.txt'\n")
