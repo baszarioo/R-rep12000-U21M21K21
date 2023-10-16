@@ -52,3 +52,33 @@ c) Write/Save a variable earning_level in a earnings.txt file.		[SCRIVERE/SALVAR
 > write.table(data$earning_level, file = "earnings.txt", col.names=FALSE, row.names=FALSE)
 # Confirm that the data has been saved: 	[CONFERMARE CHE I DATI SONO STATI SALVATI:]
 > cat("The 'earning_level' variable has been saved to 'earnings.txt'\n")
+
+
+Compito3: In R write a function, that takes an numeric data vector x and an integer k as an arguments, the function will return k' central moment of x vector accordantly to the formula: 
+ Mk(x)=1/n Σn(i=1) (xi-śr(x))^k, whereas śr(x) stands for arithmetic average of x vertice.: 
+> central_moment <- function(x,k) {
++ x_b <- mean(x)
++ n <- length(x)
++ mk <- sum((x-x_b)^k) / n
++ return(mk)
++ }
+
+ex: 
+> data_vector <- c(1,2,3,4,5)
+> var <- central_moment(data_vector, 2)
+> cat("2 val: ", variance, "\n")
+> mom_3 <- central_moment(data_vector, 3)
+> cat("3 val: ", mom_3, "\n") 
+||
+> central_moments <- function(x, order.max) {
+	n <- length(x)
+	mean_x <- mean(x)
+	moments <- numeric(order.max)
+	for (i in 1:order.max) {
+		moments[i] <- sum((x - mean_x)^i)/n
+	}
+	return(moments)
+}
+# USAGE: 
+> data_vector <- c(1,2,3,4,5)
+> central_moments(data_vector, 3)
