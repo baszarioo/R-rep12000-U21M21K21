@@ -81,4 +81,4 @@ ex:
 }
 # USAGE: 
 > data_vector <- c(1,2,3,4,5)
-> central_moments(data_vector, 3)
+>  

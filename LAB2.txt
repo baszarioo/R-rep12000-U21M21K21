@@ -1,0 +1,70 @@
+//* DESCRIPTIVE STATISTICS IN R ENVIRONMENT *||
+_______________________________________________
+Data categorization: divergent series pointwise (szereg rozdzielczy punktowy).
+_______________________________________________
+Data analysis is usually eased by categorizing it, by creating something called divergent series.
+If a variable is discrete/low-profile, it means = it doesnt take many different values, then it might be reasonable to create sth.c. 'pointwise divergent series', i.e.:
+	number of children in a family:	0|	 1|	 2|	  3|	  4| 	  5|
+	number of families:		1|	15|	81|	244|	388|	271|
+In R this can be achieved by using table() or xtabs() functions. To demonstrate their output,  we will read a file liczba_dzieci.txt and we will categorize data in it.
+> dane=read.table("liczba_dzici.txt", header=TRUE)
+> t1=table(dane)
+> t2=xtabs(dane)
+> names(t1)
+
+If a variable is a steady one, it means: that it intakes many different values, then construction of 'pointwise series' is a nonsense, because number of classes will be approximately the same, as number of observations. In that case more reasonable will be to categorize values of observations in a 'divergent series', f.e:
+ voltage in a wire     |(210,213]| (213,216] | (216,219] | (219,222] | (222,225] 
+ number of observations|	1|	1    |	8	 |	9    |	6
+'Divergent series' (szeregi przedziałowe) are usually created by dividing the range of delta/changes/variations (zmiany) of a variable, into intervals/spans of equal length. Number of spans k, can be selected using f.e. k≃root(n) //pierwiastek.n, where n stands for number of observations. It can also be defined by determinig the boundaries/borders of spans. Usable function in that case is cut().
+EXAMPLE:
+>x=c(225, 223, 224, 220, 221, 218, 215, 219, 220, 221, 222, 220, 222,
++ 220, 219, 223, 224, 217, 218, 219, 216, 210, 218, 221, 225)
+> n=length(x)
+> y1=cut(x, sqrt(n))
+> table(y1)
+> y2=cut(x,breaks=c(205,215,225))
+> levels(y2)=c("low", "high")
+> table(y2)
+_______________________________________________
+CROSSTABS
+_______________________________________________
+In a R you can also create a Crosstabs (contingnency table/kontygnencja), that allows us to represent a dividing of two or more random variables. Most commonly they are presented as a matrix form, i.e.
+ID	PLEC 	TYP PROGRAMU
+1	K	Kabarety
+2	M	Kabarety
+3	M 	Teleturnieje
+4	K	Teleturnieje
+5	M	Kabarety
+
+__________|	Typ programu		|______
+PLEC	  | Teleturnieje |	Kobiety | Razem
+Mezczyzni |	2	 |	3	| 5
+Kobiety	  |	4	 |	1 	| 5
+Razem:	  |	6	 |	4 	| 10
+_______________________________________________
+CROSSTABS EXAMPLE:
+_______________________________________________
+	Creation of crosstabs is possible through table() function.
+Example: Let us use the MathAchieve database available in a 'nlme' package, which contains results and acheivements from mathematical competition. We are interested in genders distribution towards to(względem) affiliation into Minorities (variables:Sex, Minority).
+>library(nlme)
+>table(MathAchieve$Sex, MathAchieve$Minority)
+	No	Yes
+Male	2481	909
+Female	2730	1065
+
+From achieved contingency table, we can read that, f.e: 909 from among interviewees man, belong to minorities.
+_______________________________________________
+USABLE FUNCTOINS:
+_______________________________________________
+Functions, that indludges/allows us to appoint(wyznaczyć) most popular 'descriptive statistics' are:
+	>mean(petal) + additional parameter trim e (0,0.5) lets us trim*100% extreme(skrajny) observations, from every edge of sample, before counting the mean(useful, when there are existing misfit observations(obserwacje odstające)..
+	>var(petal) = variation sampling( version unencumbered(nieobciążony) var=1/n-1 sigma n, i=1(xi-x')^2),
+	>sd(petal) = defautlt deviation(odchylenie) [root from variation sampling^^^]
+	>min(petal) = minimum from sample,
+	>max(petal) = maximum from sample,
+	>range(petal) = range of variability/volatility (min,max):
+_______________________________________________
+ KOMENTARZE - obowiązkowo
+QUANTILE SAMPLING in R
+_______________________________________________
+Functions, that allows us to count descriptive statistics 

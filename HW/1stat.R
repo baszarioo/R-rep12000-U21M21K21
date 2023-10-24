@@ -4,6 +4,7 @@ print(weight_column)
 df$bmi <- df$Peso / (df$Altezza^2)
 print(df)
 
+#2
 install.packages("foreign")
 library(foreign)
 file_path <- "C:\\Users\\kubsoa\\Downloads\\Employee data.sav"
@@ -24,7 +25,7 @@ print(earning_level_counts)
 #2.c
 write.table(dataf$earning_level, file = "C:\\Users\\kubsoa\\Downloads\\earnings.txt",
             col.names=FALSE, row.names=FALSE)
-cat("The 'earning_level' variable has been saved to 'earnings.txt'\n")
+cat("'earning_level' saved to -> 'earnings.txt'\n")
 
 #3
 central_moments <- function(x, order.max) {
