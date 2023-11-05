@@ -69,3 +69,19 @@ if (concentration_test$p.value < 0.05) {
 #2.g length of the interval containing the middle 50% of observationS:
 middle_50 <- quantile(Indometh$conc, c(0.25, 0.75))
 interval_length <- middle_50[2] - middle_50[1]
+
+#33333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+
+#aggregate(): This is a function in R used for data aggregation or summarization. It is typically used to perform operations on subsets of data based on one #or more grouping variables.
+
+#Sepal.Length ~ Species: This formula specifies that you want to aggregate the Sepal.Length variable by the Species variable. In other words, you want to #group the data by the species of the iris flowers.
+
+#iris: This is the data frame that contains the data you want to aggregate.
+
+#FUN: This parameter specifies the function or functions that you want to apply to the grouped data. In this case, it's set to a custom anonymous function.
+
+#function(x) c(mean = mean(x), median = median(x), sd = sd(x)): This is an anonymous function that takes a vector x as input and calculates the mean, #median, and standard deviation of the values in x. The results are returned as a named vector where the names are "mean," "median," and "sd."
+
+#The aggregate() function uses this custom function to apply the mean, median, and standard deviation calculations to the Sepal.Length values for each #species in the iris dataset. The result is a new data frame summary_data that contains the aggregated statistics for each species.
+
+#For example, if you were to print summary_data, it would look like:
