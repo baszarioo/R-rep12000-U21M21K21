@@ -2,7 +2,7 @@
 #	build a compartment series (szereg przedzi) for analyzed data:	// use a cut().
 # 		i. with equal lengths of series.
 #		ii. containing 5 classes with( in approxiamtely) equal multiplicity/strength (liczebnosc)
-#	in what compartment describing water level in a lake, there is a dominant? #	Dominant: value of variable, # that repeats itself the most in analyzed data, so it describes the most casual (typowy) value of variable.
+#	#	Dominant: value of variable, # that repeats itself the most in analyzed data, so it describes the most casual (typowy) value of variable.
 
 data("db");
 x=length(db);
@@ -16,4 +16,15 @@ print(css);
 table(css);
 
 #quantile() function used to calculate the quantiles that divide the data into appoximately equal classes + cut() function assigns the data points to these classes.
+
+#1b)
+#in what compartment in what compartment ... there is a dominant? 
+# Count the frequency of observations in each compartment
+class_counts <- table(cs)
+# Find the class with the highest frequency
+dominant_class <- names(class_counts)[which.max(class_counts)]
+# Print the result
+cat("The dominant class for water level is:", dominant_class, "\n")
+
+
 
