@@ -1,0 +1,19 @@
+#1) LH:
+#	build a compartment series (szereg przedzi) for analyzed data:	// use a cut().
+# 		i. with equal lengths of series.
+#		ii. containing 5 classes with( in approxiamtely) equal multiplicity/strength (liczebnosc)
+#	in what compartment describing water level in a lake, there is a dominant? #	Dominant: value of variable, # that repeats itself the most in analyzed data, so it describes the most casual (typowy) value of variable.
+
+data("db");
+x=length(db);
+y=cut(db, sqrt(x)));
+print(y);
+table(y);
+
+#??
+csss <-cut( db, breaks=quantile(db, p=seq(0,1,length.out=5+1)), include.lowest=TRUE);
+print(css);
+table(css);
+
+#quantile() function used to calculate the quantiles that divide the data into appoximately equal classes + cut() function assigns the data points to these classes.
+
