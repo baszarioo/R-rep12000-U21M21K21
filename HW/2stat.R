@@ -22,5 +22,34 @@ cat("Dominanta znajduje sie w przedziale:", dominant, "\n");
 
 
 #//////////////////////////////////////
+#2.a
+data(Indometh); #sprawdzamy baze danych indometh
+table(Indometh); #wyswietlamy w postaci tabelki
+n <- length(Indometh$conc); #wyznaczenie wielkosci probki
 #2.b
+n_range <- range(Indometh$conc);
+#2.c srednia x mediana:
+srednia <- mean(Indometh$conc);
+mediana <- median(Indometh$conc);
+if (srednia > mediana) {
+  kom <- "srednia > mediana";
+} else if (srednia < mediana) {
+  kom <- "mediana > srednia";
+} else {
+  kom <- "mediana = sredniej";
+}
+#2.d 
+# Test Shapiro na normalnosc symetrii
+sym_test <- shapiro.test(Indometh$conc);
+if (shapiro_test$p.value < 0.05) {
+  cat("Probka nie jest rozkładem normalnym.\n");
+} else {
+  cat("Probka to rozkład normalny.\n");
+}
+#2.e
+srednia_przycieta <- mean(Indometh$conc, trim = 0.25);
+#2.f koncentracje probki (kurtoza).
+install.packages("moments"); #pobieramy biblioteke
+library(moments); #zalaczamy ja
+kurtosis(Indometh$conc); #wykonujemy obliczenia za pom. gotowej funkcji
 

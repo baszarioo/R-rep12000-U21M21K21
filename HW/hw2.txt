@@ -26,5 +26,46 @@ dominant_class <- names(class_counts)[which.max(class_counts)]
 # Print the result
 cat("The dominant class for water level is:", dominant_class, "\n")
 
+#2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+#DataBase Indometh contains information about concentration/intensity(stezenie) of indometacine( anti-inflammatory drug) in the blood. Analyze the variable conc, that contains numeric data about concentraion of dru (mcg/ml).
+#2.a the amoount of sample: 
+sample_size <- nrow(Idb);
+n <- length(Idb$conc);
+#2.b from what range/compartment the analzyed var, takes on the values?
+range <- range(Indometh$conc)
+#2.c mutual placement of mean(srdnia) and median
+mean_conc <- mean(Indometh$conc)
+median_conc <- median(Indometh$conc)
+if (mean_conc > median_conc) {
+  comment <- "The distribution of conc is skewed to the right."
+} else if (mean_conc < median_conc) {
+  comment <- "The distribution of conc is skewed to the left."
+} else {
+  comment <- "The distribution of conc is symmetric."
+}
+#2.d check the symmetry of the sample.
+# Create a histogram
+hist(Indometh$conc, main = "Histogram of Concentration", xlab = "Concentration", ylab = "Frequency", col = "lightblue", border = "black")
 
+# Add a vertical line for the mean
+abline(v = mean(Indometh$conc), col = "red", lwd = 2)
 
+# Add a vertical line for the median
+abline(v = median(Indometh$conc), col = "blue", lwd = 2)
+
+# Add legend
+legend("topright", legend = c("Mean", "Median"), col = c("red", "blue"), lwd = 2)
+#2.e find the trimmmed mean
+trimmed_mean <- mean(Indometh$conc, trim = 0.25)
+
+#2.f check the concentration of conc;//
+concentration_test <- var.test(Indometh$conc)
+if (concentration_test$p.value < 0.05) {
+  concentration_comment <- "The variance of conc is significantly different from zero."
+} else {
+  concentration_comment <- "The variance of conc is not significantly different from zero."
+}
+
+#2.g length of the interval containing the middle 50% of observationS:
+middle_50 <- quantile(Indometh$conc, c(0.25, 0.75))
+interval_length <- middle_50[2] - middle_50[1]
