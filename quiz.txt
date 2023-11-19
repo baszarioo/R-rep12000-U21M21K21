@@ -1,0 +1,29 @@
+To create a sample that contains 2 different random numbers form range of (1,10), you can use the command:
+sample(1:10,2) 
+||or
+sample(10,2);
+
+
+Vector iven as an prob parameter of sample() function, that determines the probability to select some defined elements from a source vector, should be:
+same size a s a vector, from which we randomize elements, but sum of its parameters cant be equal to 1.
+
+
+Which of the commands is not valid?
+sample(10,100)
+
+
+Function that allows to count distribution quantiles of t-Student is a:
+qt()
+
+
+Function that allows to count a distribuant of chi-kwadrat distribution is a:
+pchisq()
+
+
+Command, that can generate:
+* four random numbers from beta(2,3) distribution is a: 
+rbeta(4,2,3);
+* three random numbers from bera(4,2) distribution is a:
+rbeta(3,4,2);
+* three random numbers from (beta2,4) distribution is a:
+rbeta(3,2,4)
