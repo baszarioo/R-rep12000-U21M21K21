@@ -59,3 +59,12 @@ sample(alphabet,size=8,prob=seq(1,length(alphabet))/length(alphabet),replace=TRU
 
 exponential distribution's volume with a parameter of 4 in a 1/2 point.
 dexp(1/2,rate=4);
+
+
+distribuant of steady distribution on (-3,3) range in a point of 0.
+punif(0,-3,3)
+
+
+bottom quantile of normal distribution with a mean = 5, and a variance of 9.
+qnorm(0.25,mean=5,sd=sqrt(9));
+
