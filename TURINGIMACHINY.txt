@@ -1,0 +1,186 @@
+Initial state: START
+
+CARRY: The current column being considered is part of a carry.
+
+
+START -READ-> BLANK, Move right, Go to END state.
+
+START -READ-> CARRY, Move right, Go to ADD_1 state.
+
+
+ADD_1 -READ-> 0, Write CARRY, Move right, Go to END state.
+
+ADD_1 -READ-> 1, Write BLANK, Move right, Go to ADD_1 state.
+
+
+END -READ-> BLANK, Write CARRY, Move left, Go to ADD_2 state.
+
+END -READ-> CARRY, Write 1, Move left, Go to ADD_2 state.
+
+
+ADD_2 -READ-> 0, Move left, Go to END state.
+
+ADD_2 -READ-> 1, Move left, Go to ADD_2 state.
+
+
+
+
+q0,1,_,_
+q0,_,1,_,>,>,-
+
+q0,0,_,_
+q0,_,_,0,>,-,>
+
+q0,_,_,_
+qs,_,_,_,-,<,<
+
+qs,_,1,0
+qs,_,_,_,-,<,<
+
+qs,_,_,_
+qacc,_,_,_,-,-,-
+
+
+
+START -READ-> BLANK, Move right, Go to END state.
+q0,1,
+START -READ-> CARRY, Move right, Go to MULTIPLY_1 state.
+
+
+MULTIPLY_1 -READ-> 0, Write BLANK, Move right, Go to MULTIPLY_1 state.
+
+MULTIPLY_1 -READ-> 1, Write CARRY, Move right, Go to MULTIPLY_1 state.
+
+
+END -READ-> BLANK, Write BLANK, Move left, Go to ADD_END state.
+
+END -READ-> CARRY, Write 1, Move left, Go to ADD_END state.
+
+
+ADD_END -READ-> BLANK, Write BLANK, Move left, Go to ADD_END state.
+
+ADD_END -READ-> CARRY, Write 1, Move left, Go to ADD_END state.
+
+
+ADD_END -READ-> 0, Write 0, Move right, Go to END state.
+
+ADD_END -READ-> 1, Write BLANK, Move right, Go to MULTIPLY_2 state.
+
+
+MULTIPLY_2 -READ-> BLANK, Write BLANK, Move right, Go to END state.
+
+MULTIPLY_2 -READ-> CARRY, Write 1, Move right, Go to MULTIPLY_2 state.
+
+
+MULTIPLY_2 -READ-> 0, Write 0, Move left, Go to ADD_MULTIPLY state.
+
+MULTIPLY_2 -READ-> 1, Write 1, Move left, Go to ADD_MULTIPLY state.
+
+
+ADD_MULTIPLY -READ-> BLANK, Write BLANK, Move left, Go to ADD_MULTIPLY state.
+
+ADD_MULTIPLY -READ-> CARRY, Write 1, Move left, Go to ADD_MULTIPLY state.
+
+
+ADD_MULTIPLY -READ-> 0, Write 0, Move right, Go to MULTIPLY_2 state.
+
+ADD_MULTIPLY -READ-> 1, Write BLANK, Move right, Go to MULTIPLY_2 state.
+
+
+
+name: Binary addition
+init: q0
+accept: q5
+
+
+q0,1,_,_
+q0,1,_,_,>,-,-
+
+q0,#,_,_
+q1,_,_,_,>,-,-
+
+q1,0,_,_
+q1,_,0,_,>,>,-
+
+q1,1,_,_
+q1,_,1,_,>,>,-
+
+q1,_,_,_
+q2,_,_,_,<,<,-
+
+q2,_,0,_
+q2,_,0,_,<,-,-
+
+q2,_,1,_
+q2,_,1,_,<,-,-
+
+q2,1,0,_
+q3,1,0,_,-,-,-
+
+q2,1,1,_
+q3,1,1,_,-,-,-
+
+q2,0,1,_
+q3,0,1,_,-,-,-
+
+q2,0,0,_
+q3,0,0,_,-,-,-
+
+q3,1,0,_
+q3,1,0,1,<,<,<
+
+q3,0,1,_
+q3,0,1,1,<,<,<
+
+q3,0,0,_
+q3,0,0,0,<,<,<
+
+q3,1,1,_
+q4,1,1,0,<,<,<
+
+q3,_,_,_
+q5,_,_,_,-,-,-
+
+q3,1,_,_
+q3,1,_,1,<,<,<
+
+q3,0,_,_
+q3,0,_,0,<,<,<
+
+q3,_,1,_
+q3,_,1,1,<,<,<
+
+q3,_,0,_
+q3,_,0,0,<,<,<
+
+q4,0,0,_
+q3,0,0,1,<,<,<
+
+q4,0,1,_
+q4,0,1,0,<,<,<
+
+q4,1,0,_
+q4,1,0,0,<,<,<
+
+q4,1,1,_
+q4,1,1,1,<,<,<
+
+q4,_,0,_
+q3,_,0,1,<,<,<
+
+q4,_,1,_
+q4,_,1,0,<,<,<
+
+q4,1,_,_
+q4,1,_,0,<,<,<
+
+q4,0,_,_
+q3,0,_,1,<,<,<
+
+q4,_,_,_
+q5,_,_,1,-,-,-
+
+
+
+unary mu
+
