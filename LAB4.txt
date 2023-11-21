@@ -1,0 +1,98 @@
+Charts are used to graphical representation of data. There are many types of charts, most popular are:
+*linear_plot* [punktowy] point_geom = ggplto(mtcars, aes(x = wt, y =mpg)) + geom_point()
+
+aes() = aesthetic mappings of a plot.
+
+*linear chart* ggplot(mtcars, aes(x=wt, y=mpg)) + geom_line();		
+
+*bar graph* [słupkowy]  ggplot(mtcars, aes(x=factor(cyl))) + geom_bar();
+
+*pie chart* [kołowy]: ggplot(mtcars, aes(x=factor(cyl))) + gemo_bar() + coord_polar(theta = "y");
+
+*spread chart/scatterplot* [rozrzutu]: ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point();
+
+
+
+The R envirnoment allows for the creation of btoh basic statistical charts and less common ones, such as:
+- box and whisker (box plot)
+- stem and leaf = (lodyga+ liscie)
+- Quantile-quantile.
+- violin plot(skrzypcowy).
+
+
+
+Many commands for generating charts share commmon arguments, including: 
+* height, width 
+* col = specifies the color of char elmeents, (i.e., bars,  slices of a pie, etc.)
+* main, sub = specifies the title and subtitle of the chart, 
+* axes, axisnames = controls the dipslay and labeling of chart axes, default = TRUE.
+* xlab, ylab = allows for the input of custom text descriptions for the x and y axes of the chart.
+* add = allows for displaying the chart together with another previously generated chart, default: FALSE.
+
+
+
+In the R environment ,there is a rich range of colors available. After calling the function colors(), you receive a list of 657 colors that are available. You can refer to a specific color by its name, such as 'cyan' ,or by its nubmer, for example : 68. When creatinga a chart you have the option to define the color palette of its comoponents (bars, slices of a pie) by setting the 'col' arguemtn of the corresponding chart-generating function. For Example: 
+	* col = rainbow(5) = the elements of the chart will be alternately colored with five colors of the rainbow.
+	* col = 45- all elements of the chart will be in a uniform shade of the color blue("cadetblue3").
+	( col=c(93,2,"darkgrey") - the elements of the chart will be alternately colored with three specified colors.
+
+
+
+CHART LEGEND:
+Ading a legend to a chart in R is possible by calling the legend() function. The positioning of the legend on the chart can be achieved through the x (or x,y) argument, which contains coordinates or text such as "bottomright", 'bottom', 'bottomleft', 'left', 'topleft', 'top', 'topright', 'right', 'center'.
+
+Additionally, it is possible to place the legend on the chart at a specified location using the locator(1) argument, which allows placing the legend otn the chart at a location indicated by the mouse.
+_ Other important parameters include:
+ = bty = sepcifies whether the leegend should be framed; possible values: "o" = frame(default) or "n" = no frame.
+ = bg - if 'bty="o"', allows setting the background of the legend frrame.
+ = cex - specifies the font size in the legend.
+ = fill - allows displaying squares next to the description and assigning them selected coors, e.g., fill=rainbow(4).
+ 
+Note: the legend() function should be called after RR displays the chart.
+
+
+
+PLOT() FUNCTION.
+The fundamental and most versatile(uniwersalna) function for geneerating plots in R is the plot() function. It can produce various results depending on the parameters provided.
+_The most crucial (najwazniejszy) parameter of the plot() function is type, representing the type of plot. It can take on values such as:
+	* "p" for scatterplot,
+	* "l" for line plot,
+	* "b" for a point-to-point line plot,
+	* "s" for a step plot,
+	* "S" for a step plot, reversed.
+	* "h" for a histogram-like plot.	//kreskowy/histogramowy.
+	
+	
+
+THE PLOT() FUNCTION -EXAMPLES OF STATISTICAL PLOTS.
+' let's analyze the "mcycle" database included in the 'MASS' Package.
+#load the MASS Library.
+>library(MASS)	#it contains the measures of acceleration of head during a motorcycle crash...
+#Single-dimensional scatter plot of time for each observaiton
+>plot(mcycle$times);
+#Two-diemnsional scatter plot DEPICTING[obrazujacy] the relationship between time and acceleration
+>plot(,cycle$times, mcycle$accel);
+#equivalent to the previous scatter plot using 'type' argument).
+> plot(mcycle$times, mcycle$accel, type="p");
+#Twodimensional LINE plot depicting the relationshi between time and acceleration:
+> plot(mcycle$times, mcycle$accel, type="l");
+#Two dimensional STEP plot DEPICTING the relationship betwwen time and acceleration:
+> plot(mcycle$times, mcycle$accel, type="s");
+
+
+
+THE PLOT() FUNCTION - plots of ARBITRARY[dowolny] FUNCTIONS>
+_ the par(0 function, when called before the plot() function, allows for the specification of graphical parameters(). Commonly used arguments include: 
+	* mfcol, mfrow = a vector specifying the number of rows and columns that detewrmine the array on which individual plots will be drawn.
+
+Before generating additional plots, let's execute the command:
+	par(mfcol = c(1,2))
+The plot(0 function can also be used to generate plots of function for example
+#{Plot of the cosine function over the range of [-2*pi, 2*pi] }
+plot(cos, -2*pi, 2*pi);
+#Plot of the tangent function over the range [-pi/3, pi/3];
+plot(tan, -pi/3, pi/3);
+
+It can also be utilized to create plots of distribution[dystrybuant] functtions and densities of known probability distributions.
+
+
