@@ -37,7 +37,6 @@ In the R environment ,there is a rich range of colors available. After calling t
 	( col=c(93,2,"darkgrey") - the elements of the chart will be alternately colored with three specified colors.
 
 
-
 CHART LEGEND:
 Ading a legend to a chart in R is possible by calling the legend() function. The positioning of the legend on the chart can be achieved through the x (or x,y) argument, which contains coordinates or text such as "bottomright", 'bottom', 'bottomleft', 'left', 'topleft', 'top', 'topright', 'right', 'center'.
 
@@ -96,3 +95,54 @@ plot(tan, -pi/3, pi/3);
 It can also be utilized to create plots of distribution[dystrybuant] functtions and densities of known probability distributions.
 
 
+
+BAR CHART !!!
+The barplot() [słupkowy] function allows you to generate a vertical (by default) or horizontal bar chart.
+Depending on the form of the main argument, the following types of bar charts are possible:
+1. Illustrating the values of individual observations - one bar corresponds to one observation; the main argument is the name of the variable for which we want to illustrate the values of observations.
+2. Illustrating groups of observations: - one bar corresponds to one category; the main argument is a contingency table (the result of the table() function) -> categorizing the variable for which we want to illustrate groups of observations.
+
+It's also possible to create charts that are stacked/grouped based on another variable. In this case, the function's argument is a cross-tabulation for two variables.
+
+
+
+BARPLOT() FUNCTION: ARGUMENTS//
+Specific parameters for the barplot() function are:
+ * horiz = horizontal placement of bars, default: FALSE,
+ * beside= specifies the arrangement of bars in the case of division based on the categories of another variable. If beside=TRUE, the bars are grouped next to each other; if beside=FALSE (default), the bars are stacked on top of each other.
+
+
+
+BAR CHART OF OBSERVATION VALUES: EXAMPLE ;/
+The 'trees' database contains information about measurements of 31 fallen American ash trees. The following command allows you to generate a bar chart for the heights of individual trees:
+> barplot(trees$Height, col=rainbow(31), main="Heights of American Ash Trees(in feet)")
+
+
+
+xBAR CHART FOR OBESRVATION GROUPS;; EXAMPLE:
+The file "survey_students_2011.csv" contains information about third-year computer science students from the Faculty of Mathematics and Computer Science, collected in the summer of 2011. The followin commands allow you to load the file and generate a bar chart for observation groups determined by the variable of "jobtitle" (preferences regarding the position that students would like to hold in the future):
+> students <- read.csv("survey_students_2011.csv", header=TRUE, sep=";");
+> attach(students);
+> arg <- table(jobtitle);
+> barplot(arg, col=rainbow(5), xlab="Preffered Position", ylab="Number of Students");
+> legend("topleft", c("software tester", "technical support specialist", "programmer", "network systems specialist", "system designer"), cex=1, bty="n", fill=rainbow(5));
+
+
+
+
+GROUPED BAR CHART: EXAMPLE//
+We can illustrate the number of students preferring specific positions, grouped based on whether the student watches TV series or not.
+> arg <- table(jobtitle, series);
+> barplot(arg, col=rainbow(5), beside=T, xlab="Watching TV series(1) or not(0)", ylab="Number of students");
+> legend("topleft", c("software tester", "technical support specialist", "programmer", "network systems specialist", "system designer"), cex=1, bty="n", fill=rainbow(5));
+
+
+
+GROUPED BAR CHART: /V2// EXAMPLE:
+Once again, we will illustrate the number of students preferring specific postitions, but this time grouped based on whether the student watches TV series or not. We will also switch the variables in the table() function: 
+> arg <- table(series, jobtitle);
+> barplot(arg, col=rainbow(2), xlab="Positions")
+> legend(locator(1), c("Doesn't watch series", "Watches series"), cex=1, bty="n", fill=rainbow(2))
+
+Note: We specify the legend's position by clicking on the appropriate location on the chart with the mouse. 
+As a result, we obtain a chart where the nubmering below the bars corresponds to the numbers of possible positions in the survey.
