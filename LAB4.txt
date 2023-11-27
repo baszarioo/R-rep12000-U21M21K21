@@ -146,3 +146,75 @@ Once again, we will illustrate the number of students preferring specific postit
 
 Note: We specify the legend's position by clicking on the appropriate location on the chart with the mouse. 
 As a result, we obtain a chart where the nubmering below the bars corresponds to the numbers of possible positions in the survey.
+
+
+
+HISTOGRAM !!
+A histogram is a special type of bar chart that allows for a visual represntaion of the distribution of a studied feature, which is appropriately categorized. There are as many bars as categories(classes), and they are always of the same width, spaced at equal intervals on the horizontal axis. The heights of the bars can correspond to the frequencies of individual classes or their relative frequencies (empirical probabilities).
+	
+	The hist() function allows for the generation of a histogram. Important parameters include:
+* breaks: a parameter determining how to determine classes on the histogram. It can be one of the following arguments: 
+	*a vector containing breakpoints, 
+	*a number specifying the number of classes, 
+	*the name of an algorithm that calculates the number of classes, 
+	*or a function computing the number of classes. 
+ By default, this parameter is set to "Sturges"
+* freq: the vertical axis represents the frequencies of indiviudal classes (default is TRUE).
+* prob: the vertical axis represents relative frequencies (empirical probabilities) for individual classes (default is FALSE).
+
+
+HISTOGRAM _ EXAPMLE"/
+The boot package includes, among other things, the urine database. We can generate a histogram for the variable :ph: from this database as follows:
+> library(boot);
+> hist(urine$ph, main="Histogram PH", col=rainbow(20));
+
+
+
+STEM-AND-LEAF PLOT:	[lodyga-liscie]
+The stem() function allows for the generation of a stem-and-leaf plot. This is a textual plot illustrating the values of a variable. Important parameters include:
+* scale: specifies the scale of the plot( default is 1).
+* width: specifies the width of the plot( default is 80).
+ Example:
+> a = c(1.2, 2.4, 3.4, 4.4, 4.5, 5.4, 5.5, 5.5, 6.3, 6.4);
+> stem(a);
+> stem(a, scale=2);
+# Compare the results of the last two commands.
+
+
+
+PIE CHART:! [kolowy]
+A pie chart allows for comparing the proportions of individual fractions in relation to the whole. It's a very popular type of char with a history of over two centuries. 
+_ The pie() function enables the generation of a pie chart. Similar to the bar chart, the main argument can be either a variable (in which case the slices of the pie will correspond to the values of individual observations) or a "frequency distribution"[szereg rozdzielczy], i.e., the result of the table() function [in which case the slices of the pie will correspond to categories determined by the variable].
+
+Note: If the goal is to compare the proprtions of fractions with each other, a bar chart may be more appropriate. Additionally, a pie chart is not suitable for presenting uncategorized data ( when almost every observation has a different value)
+
+
+
+PIE CHART -. EXAMPLE;
+For instance.: we will visualize the measurement time (in days) of a certain "Sitka SPRUCE(świerk) variety" on a pie chart (using the MASS package, + "Time" variable in the sitka database).
+ > time <- Sitka$Time;
+ > time_table <- table(time);
+ > pie(time_table, col=c("green", "red", "orange", "blue", "yellow"));
+At first glance, it seems that the slices of the pie chart are equal. Are they really? If we want to compare the frequencies of measurements, a better result in this case can be obtained with a bar chart:
+> barplot(time_table);
+// CONCLUSION: The slices of the pe are indeed equal.
+
+
+
+BOX PLOT[SKRZYNKOWY]:
+A box plot, also known as a "box-and-whisker plot", allows for the presentation of parameters of the location and spread of the distribution of the studied feature[cecha]. It consists of a box and "whiskers". The lower part of the box is drawn at the height of the lower quartile(Q1 = quantile(0.25)), the upper part at the height of the upper quartile (Q3 = quantile(0.75)), and the line in the middle corresponds to the median(Q2 = Med). The heigh of the box equals the interqurtile range (IQR = Q3 - Q1).
+
+The lengths of the whiskers may vary depending on whether we conside outliers (extreme, suspiciously small or large observartions) or not. A box plot excluding outliers looks like....
+ > barplot(time_table);
+
+
+
+BOX PLOT- PARAMETERS + EXAMPLE:
+The boxplot() function allows for generating a box plot. Important parameters of the function include:
+ * range: specifies the range of whisker lengths. A positive value for range (default is 1.5) multiplied by the IQR determines the limit of whisker lengths. A value of 0 generates a box plot without considering outliers.
+ * horizontal: a logical value determining whether the plot should be oriented horizontally (default is FALSE).
+EXAMPLE;
+> x <- c(1, -3, -1, 2, 4, 6, 7, 9, 12, 15, 25, 30, -16);
+> summary(x);
+> boxplot(x);
+> boxplot(x, range=0);
