@@ -218,3 +218,42 @@ EXAMPLE;
 > summary(x);
 > boxplot(x);
 > boxplot(x, range=0);
+
+
+
+BOX PLOTS BROKEN DOWN BY CATERGORIES DETERMINED BY ANOTHER VARIABLE: 
+To draw box plots for a numerical variable broken down by categories determined by another variable (e.g., qualitative), use the '~' sign.
+Example: Let's examine the height of students from the file 'survey_students_2011.csv' broken down by their position.
+	boxplot(students$height ~ students$position)" //multiple boxes + whiskers. 
+	
+	
+	
+DATA AGGREGATION:
+Data aggregation involves calculating a statistic (one, or more, e.g. mean) for observation groups determined by categories of a grouping variable (or multiple grouping variables). The aggregate() function is used for data aggregation, with its first argument being the object to be aggregated (vector, data frame, etc). .The subsequent important arguments are: 
+	* By a list of elements by which grouping will take place (grouping variables). 
+	* FUN: = function summarizing the data, e.g., mean for average, weightened.mean fr weighted average, max for maximum, etc. 
+	
+Example: The mtcars database contains data about cars. We want to calcuate the average fuel consumption (variable mpg) for cars in groups determined by the number of cylinders (variable cyl):
+ > aggregate(mtcars$mpg, by=list(mtcars$cyl), FUN=mean)
+
+To determine the maximum values for all variables in the database, in groups determined by btoh the number of cylinders and the type fo transmission (variable am), the command should be:
+ > aggregate(mtcars, by=list(mtcars$cyl, mtcars$am), FUN=max);
+ 
+
+
+CHARTS FOR AGGREGATED DATA: 
+Example: We want to visualize the average horsepower of cars (variable hp) on a bar chart based on the number of cylinders in the car. To do this, we first aggregate the data. 
+ >data=aggregate(mtcars$hp, by=list(mtcars$cyl), FUN=mean);
+ >barplot(data$x, col=rainbow(length(data$x)));
+ >legend("topleft", names(table(mtcars$cyl)), fill=rainbow(length(data$x)));
+
+From the chart, it can be observed that the average horsepower is highest among cars with 8 cylinders
+
+
+
+EXPORTING CHARTS TO FILES:
+The simplest way to save the obtained chart in a file is to select the appropriate option from the menu: 
+It can also be done by calling the relevant function, which saves the currently displayed graphic in the selected format, in a file with the name specified as its argument: 
+ > dev.print("filename.jpeg", device=jpeg, width=600);
+ > dev.print("filename.png", device=png, width=600);
+ > dev.print("nazwa.pdf", device=pdf, width=6) .
