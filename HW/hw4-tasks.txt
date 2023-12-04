@@ -1,0 +1,29 @@
+CHARTS IN THE R ENVIRNMENT,
+TASKS:
+
+1:Load the data from the file Survey.csv into R. 
+	a. Draw a box plot for age, broken down by gender. 
+	b. Draw a histogram for systolic blood pressure. 
+	c. Modify the histogram so that empirical probabilities are marked on the vertical axis. 
+	d. Answer the question: were there more women or men in the surveyed group? by drawing an appropriate chart. 
+	e. Calculate the average systolic blood pressure for groups defined by gender. 
+	f. Visualize the obtained results on a bar chart.
+
+2: Load the data from the file UOF_gs.txt into R. 
+	a. Assign the following levels to variables: i. gender: 0 – female, 1 – male, ii. college: 1 – agriculture, 2 – architecture, 3 – construction, 4 – administration, 5 – forestry, 6 – pedagogy, 7 – engineering, 8 – fine arts, 
+
+Using the ggplot2 package, create the following charts: a. Scatter plot of salary against gender. 
+	b. Bar chart / histogram illustrating the number of graduates from each type of college (variable: college). 
+	c. Scatter plot showing the relationship between the type of completed studies and earnings, with points differentiated by color according to gender. 
+	d. Scatter plot showing the relationship between the type of completed studies and earnings, with points differentiated by shape according to gender, and color according to the date of completion of studies.
+
+111/
+1. To load the data from the file Survey.csv into R, you can use the following command: data <- read.csv("Survey.csv");
+2. To draw a box plot for age, broken down by gender you can use the following command: boxplot(data$age ~ data%gender, main="Age by gender", xlab="Gender", ylab="Age");
+3. To draw a histogram for systolic blood pressure, you can use the following command: hist(data$systolic_blood_pressure, main="Systolic Blood Presure", xlab="Systolic blood pressure". ylab="Frequency");
+4. To modify the histogram so that empirical probabilities are marked on the vertical axis, you can use the following command: hist(data$systolic_blood_pressure, main="Systolic blood pressure", ylab="Empirical probability", xlab="systolic blood pressure", freq=FALSE);
+5. To answer the question of whether there were more women or men in surveyed group, you can draw a bar chart using the following command: barplot(table(data$gender), main="Gender Distribution", xlab="Gender", ylab="Count");
+6. To calculate the average systolic blood pressure for groups defined by gender, you can use the following: aggregate(data$systolic_blood_pressure, by=list(data$gender), FUN=mean);
+7. To visualize the obtained results we can send a command: barplot(aggregate(data$systolic_blood_pressure, by=list(data$gender), FUN=mean)$x, names.arg=aggregate(data$systolic_blood_pressure, by=list(data$gender), FUN=mean)$Group.1, main="Averae Systolic Blood Presure by Gender", xlab="Gender", ylab="Average Systolic Blood Presure");
+
+
