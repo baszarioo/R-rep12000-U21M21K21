@@ -1,0 +1,48 @@
+PACKAGE GGPLOT2( GRAMMAR OF GRAPHICS)
+_-Grammar of Graphics-_
+Easier visualization, understanding, and communication of graphics. In practice, this means building independent "blocks" and combining them to create any graphic. Charts consist of layers that are applied to the base object.
+* Advantages of ggplot2:
+Allows for the creation of impressive and complex graphics, charts are easier to generate, more flexible;
+the package is very popular( many users: forums, mailing, lists, etc,.), the possibility of using ready-made "themes."
+Package Creastor: @Hadley Wickham.
+Charts in the R environment: ggplot2 package.
+
+
+INSTALLATION AND LOADING INTO R MEMORY;
+>install.packages("ggplot2");
+>library(ggplot2)
+Package documentation: https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf
+
+
+QUICK PLOT: QPLOT();
+-: Equivalent to plot()
+-: Convenient(wygodny) for creating various types of plots using a single function.
+Data: in the format of a data-frame.
+Parameters:
+   > qplot(x,y,data,color,shape,size,fill,alpha,geom,xlim,ylim,xlab,ylab,main,sub, ...);
+
+
+QPLOT() adv.
+- x,y = variables placed on the X and Y axes; for single-variable-plots, you can omit y(e.g. for histograms);
+- data = name of the data-frame.
+- color, shape, size, fill = assigns variable values to colors, shapes, sizes of symbols on the plot. Fill applies to density and box plots;
+- alpha; = transparencty of overlapping elements (value between 0-1: transparent; 1= opaque)
+- geom = defines the geometric object that specifies the plot type(possible values; "point", "smooth", "boxplot", "violin", "line", "histogram", "density", "bar", "jitter");'
+- main,sub= defines the title and subtitle of the plot ...
+- xlim, ylim = two-dimensional numeric vecotrs defining the minimum and maximum values on the X and Y axes.
+
+
+QPLOT() .3 examples:
+> qplot(mpg, data=mtcars);
+> qplot(mpg, drat, data=mtcars);
+> qplot(mpg, dra, data=mtcars, size=gear);
+> mtcars$gear <- factor(mtcars$gear, levels=c(3,4,5), labels=c("3rd-gear", "4th-gear", "5th-gear"));
+> qplot(mpg, data=mtcars, geom="density", fill=gear, alpha=I(.5), main="Fuel Consumption Distribution", xlab="Miles per Gallon", ylab="density");
+> qplot(gear, mpg, data=mtcars, geom=c("boxplot", "jitter"),
++ fill=gear, main="Fuel consumption by number of Gears",
++ xlab="", ylab="Miles per Gallon")
+> qplot(gear, mpg,data=mtcars, geom=c("violin", "jitter"),
++ fill=gear, main="Fuel consumption per no. of Gears",
++ xlab="", ylab="Miles per gallon")
+
+COMPARE THE BOX PLOTS AND VIOLIN PLOTS FROM THE LAST 2 COMMANDS;
