@@ -46,3 +46,19 @@ QPLOT() .3 examples:
 + xlab="", ylab="Miles per gallon")
 
 COMPARE THE BOX PLOTS AND VIOLIN PLOTS FROM THE LAST 2 COMMANDS;
+
+
+AESTHETIC OF PLOTS; ENCODING USING AES();
+the aes() function;..
+- Allows for precise specification of the aesthetics of plots, describing how individual variables correspond to various aesthetic properties of the plot(e.g., the age of a car is differentitated on the plot by color, while the model differentitated by shape, etc.).
+aes(x, y, size, color, shape, group, linetype,slope, intercept, etc..);
+
+
+
+GGPLOT();
+this function allows for the creation of base objects and overlaying them with individual layers containing succesive geometric objects (geom point, geom basr, geom jitter, geom text, geom step, etc.)
+    EXAMPLE:
+> mtcars$gear <- factor(mtcars$gear, levels=c(3,4,5), labels=c("3rd-gear", "4th-gear", "5th-gear"));
+> mtcars$cyl <- factor(mtcars$cyl, levels=c(4,6,8), labels=c("4-cyl", "6-cyl", "8-cyl"));
+> ggplot(mtcars, aes(x=cyl, fill=gear)) + geom_bar();
+> ggplot(mtcars, aes(x=gear, y=wt, shape=cyl)) + geom_point();
