@@ -1,0 +1,43 @@
+//// STATISTICAL TESTS IN R + t-STUDENT TESTS \\\\============
+
+T-STUDENT TESTS:
+They are parametric tests (related to distribution parameters) for one or two samples, involving the testing hypotheses concerning an unknown expected value (also known as significance tests).
+Assumptions for application: measurements follow a normal distribution or the sample size is large (sometimes n>30 is sufficient(wystarczajacy)).
+
+The t.test() function allows for the execution of the t-Student test. The first argument of the function is the data vector. The following important arguments (optional):
+* y = the second vector with data,
+* alternative = two.sided / less / greater = specifies the alternative hypothesis (default: two-sided)
+* mu = the number specifying the expected value of the distribution being tested (or the difference in expected values in the case of two samples), default is 0.
+* paired = TRUE, FALSE = specifies whether the test should be conducted(przeprowadzony) for: dependent(TRUE) or independent (FALSE = default) data. If paired=TRUE, the data vectors must be of equal length.
+
+NOTE: In cases where the assumptions of the test sare not met, an alternative to the t-Student test is the Wilcoxon test.
+
+
+
+GENERAL INFERENCE SCHEME: (ogl. schemat. wnioskowania)
+1. Formulate two mutually exclusive (wzajemnie wykluczające się) hypotheses: H0 (null) and H1(alternative); together, they civer all possible cases according to us. We will consider only the situation where  the H0 hypothesis is simple, and the H1 hypothesis is complex. A simple hypothesis is called a parametric hypothesis for which one parameter value corresponds (odpowiada jej tylko jedna wart. parametru), while a complex hypothesis is called a hypothesis for which more than one parameter value corresponds.
+
+2. Determine the significance level(istotności poz.) of the test (alfa) [>0 && <1] (usually (alfa-0.05)); We always do this at the beginning of the inference (wnioskowanie). This is the probability of making a so-called Type 1 error. => H0 is true, but we reject it; Type II error - H1 is true, but we decide in favor of H0.
+
+    REALITY/DECISION        ACCPET H0       ACCEPT H1
+     H0 true,                   OK         Type 1 error
+     H1 true,              Type II error,       OK
+
+
+
+GERNERAL INFERENCE SCHEME, advance:
+In the table, all situation that may occur have been descirbed. In two cases, we do not make erros: H0 is true, and our decision is in favor of H1. In the remaining two cases, our decisions are incorrect.
+We would like the probabilities of making both errors to be as small as possible. It turns out that this cannot be done simultaneously (jednocześnie)  ; reducing the probability of making one error increases the probability of making the other error, and vice versa. ThereforeI(wobec tego) we establish the following rule of inference (J. Neyman, E. Pearson): " We recognize the that committing a Type 1 error has worse consequences than a Type II error, so we primarily control the probability of making a Type I error, by setting the maximum acceptable value of this probability (i.e, alfa) at the very beginning. What abot the Type II error?...
+
+
+
+GENERAL INFERENCE SCHEME, advance part2:
+For Type II errors, we aim to make it smaller as well, but we don't worry much about it.
+
+3. We choose a statistic, which is a funciton of the sample or samples (this statistic is called teh test statistic) whose distribution, in the case of the truth of the H0 hypothesis, we can determine (it cannot depend on unknown parameters).
+The decision about which hypothesis, according to use, is true (ma miejsce), is made based on the value of the statistic.
+
+There are 2 equivalent ways to make a decision.
+ * Using a critical region (manual);
+ * Using the p-value (computerized). Let's consider both methods, starting with the first one.
+
