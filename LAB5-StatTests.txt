@@ -124,3 +124,35 @@ We reject the null hypothesis when (p < \alpha) <==> (t_{\text{obs|) \in K );\
 
 Note: both the siginficance level (\alpha) and the p-value are numbers in the interval (0,1).
 
+
+
+EXAMPLE 1 IN R:!
+> x=c(23,22,24,23,26,25,26,24,23,23,27,23,22,24,25,25);
+# To check the result using the ""manual" method, we can calculate the test statistic value from the formula mentioned above:
+> n=length(x);
+> T=sqrt(n)*(mean(x)-22)/sd(x);
+# Of course, we obtain the same result as above.
+
+# Now, let's do it directly in the R environment.
+#1. If the alternative hypothesis H1 is \mu !=22(case (a))"
+> t.test(x, mu=22);
+# Since p-value is = 6.372e-05 < 0.05, we reject H0 in favor of H1.
+
+
+EXAMPLE 1 IN R: adv.:
+2. If the alternative hypothesis H1 is \mu < 22 (case (B)):
+> t.test(x, mu=22, alternative = "less");
+# Since p-value = 1>0.05, we do not have grounds/basis to reject the null hypothesis.
+
+3. If the alternative hypothesis H1 is: \mu > 22 (case (C)):
+> t.test(x, mu=22, alternative = "greater");
+#since p-value if 3.186e-05 < 0.05, we reject H0 in favor of H1.
+
+
+
+STUDENT'S t-TEST: Single Sample:
+Example 2; Let's generate a random sample from a uniform distribution on the interval (-1, 1). First, let's test whether we cam assume that the expected value of the distribution from which the sample comes is -2:
+> x = runif(50, -1, 1)
+> t.test(x, mu=-2)
+
+Since the p-value is siginificantly smaller than the standard significance level of 0.05....
