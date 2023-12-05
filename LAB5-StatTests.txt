@@ -34,10 +34,93 @@ We would like the probabilities of making both errors to be as small as possible
 GENERAL INFERENCE SCHEME, advance part2:
 For Type II errors, we aim to make it smaller as well, but we don't worry much about it.
 
-3. We choose a statistic, which is a funciton of the sample or samples (this statistic is called teh test statistic) whose distribution, in the case of the truth of the H0 hypothesis, we can determine (it cannot depend on unknown parameters).
+3. We choose a statistic,  which is a funciton of the sample or samples (this statistic is called teh test statistic) whose distribution, in the case of the truth of the H0 hypothesis, we can determine (it cannot depend on unknown parameters).
 The decision about which hypothesis, according to use, is true (ma miejsce), is made based on the value of the statistic.
 
 There are 2 equivalent ways to make a decision.
  * Using a critical region (manual);
- * Using the p-value (computerized). Let's consider both methods, starting with the first one.
+ * Using the p-value (computerized).
+Let's consider both methods, starting with the first one.
+
+
+
+STUDENT'S T-TEST: SINGLE SAMPLE:
+Example1: According to technical standards, the machining of a single steel ring should take the grinder 22 minutes. Sixteen wrokstations were renadomly selected, and the machining times were as follows: 23, 22, 24, 23, 26, 25, 24, 23, 23, 27, 23, 22, 24, 25 and 24 minutes.
++ Assuming(zakładając) that the machining time(czas obrobki) follows a normal distribution, verify the hypothesis at a significance level of alfa=0.05:, Hypothesis: H0 = \mu - 22, against the alternative hypotheses:
+a) H_1 : \mu != 22
+b) H_1 : \mu < 22
+c) H_1 : \mu >22
+
+Let's denote the tested value as \mu_9, i.e, \mu_0 = 22. In this test, the test statistic takes the form:
+[ T_n = \frac{\bar{x} - \mu_0}{\frac{s}{\sqrt{n}}} ].
+
+
+
+EXAMPLE 1:
+where ( n = 16 ) is the sample size, ( \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i ) is the sample mean, and ( s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2} ) is the sample standard deviation.
+We have:
+[ \bar{x} = \frac{1}{16} (23 + \ldots + 24) = 24 ]
+[ s = \sqrt{\frac{1}{15} ((23 - 24)^2 + \ldots + (24 - 24)^2)} \approx 1.46 ]
+Therefore, the test statistic is:
+[ T_n = \frac{\sqrt{n}(\bar{x} - \mu_0)}{s} = \frac{\sqrt{16}(24 - 22)}{1.46} \approx 5.48 ]
+
+
+The critical set is a subset of the set of real numbers, and the probability of the test statistic falling into this set, given the truth of the null hypothesis (H_0), is (\alpha); in out case, (\alpha=0.05). We can define such sets in many ways. In Student's t-tests, we use three types of critical sets: two-sided, left-sided, and right-sided. The type of critical set we use determines the form of the alternative hypothesis.
+
+
+
+EXAMPLE1: CRITICAL SET adv. 8;/20
+a) Alternative hypothesis (H_1: \mu != 22.)
+From the quantile table of the t-Student distribution we obtain: (F^(-1){t(n-1)} (1- \frac(\alpha){2}) = F^{-1} {t(15)}(0.975) = 2.131) since (n-1=15). The notation (F^{-1}{t{n-1}}(1 - \frac{\alpha}{2})) comes from the fact that this number is the root of the equation (F_(t_(n-1))(t) = 1- \frac(\alpha){2}), where (F_(t_(n-1))) denotes the cumulative distribution function of the t-Student distribution. The critical set (two-sided) is given by:
+ K = \left(-\infty, -F^{-1}{t{n-1}}(1 - \frac{\alpha}{2})\right) \cup \left(F^{-1}{t{n-1}}(1 - \frac{\alpha}{2}), +\infty\right) = (-\infty, -2.131) \cup (2.131, +\infty). ]
+
+Decision: (T_n \in K), therefore, we reject (H_0) in favor of (H_1).
+
+
+
+EXAMPLE1: CRITICAL SET adv. part 2:
+(b) Alternative hypothesis \(H_1: \mu < 22\).
+
+From the quantile table of the t-Student distribution, we obtain:
+\[ F^{-1}_{t_{n-1}}(1 - \alpha) = F^{-1}_{t_{15}}(0.95) = 1.753. \]
+The critical set (left-sided) is given by:
+\[ K = \left(-\infty, -F^{-1}_{t_{n-1}}(1 - \alpha)\right) = (-\infty, -1.753). \]
+Decision: \(T_n \notin K\), therefore, we do not have grounds to reject \(H_0\).
+
+(c) Alternative hypothesis \(H_1: \mu > 22\).
+
+From the quantile table of the t-Student distribution, we obtain:
+\[ F^{-1}_{t_{n-1}}(1 - \alpha) = F^{-1}_{t_{15}}(0.95) = 1.753. \]
+The critical set (right-sided) is given by:
+\[ K = \left(F^{-1}_{t_{n-1}}(1 - \alpha), +\infty\right) = (1.753, +\infty). \]
+Decision: \(T_n \in K\), therefore, we reject \(H_0\) in favor of \(H_1\).
+
+Note: If the significance level of the test (\(\alpha\)) is not specified in the task, we take the standard level, i.e., \(\alpha = 0.05\).
+
+
+
+P-VALUE:
+But how do we make decision in the R envirionment? We use the p-values.
+Statistical tests conducted in the R environment do not immediately and unequivocally provide an answer on whether to accept or reject the null hypothesis. Instead, we obtain a p-value.
+What is a p-value? If the observed value of the test statistic (T_n) is denoted as ( t_{\text{obs}}), the p -value is determined as follows;
+[ P(T_n > t_{\text{obs}}) \text{, in the case of an alternative hypothesis with the > sign;} ]
+[ P(T_n < t_{\text{obs}}) \text{, in the case of an alternative hypothesis with the < sign;} ]
+[ P(T_n > |t_{\text{obs}}|) + P(T_n < -|t_{\text{obs}}|) = 2P(T_n > |t_{\text{obs}}|) = 2P(T_n < -|t_{\text{obs}}|)
+\text:{, in the case of an alternative hypothesis with the } \neq \text {sign.} ]
+
+The p-valie allows us to assess credibility[określic wiarygodność] of the null hypothesis H_0:
+the larger the p-value, the more we should accept the null hypothesis. A small p-value goes agains the null hypothesis.
+To be more precise, the decision to accept or reject (H_0) is made by comparing the p-value with the significance level (\alpha) of the test:
+[ \text{If } p \leq \alpha, \text{ reject } H_0; ]
+[ \text{If } p > \alpha, \text{ accept } H_0. ]
+
+
+
+P-VALUE; adv.
+We reject the null hypothesis when (p < \alpha) <==> (t_{\text{obs|) \in K );\
+ we do not have basis(pdostaw) to reject the null hypothesis when:
+(p > \alpha) <==> (t_{\text{obs}} \notin    (!e)    K).
+    In the case of a two-sided critical region.
+
+Note: both the siginficance level (\alpha) and the p-value are numbers in the interval (0,1).
 
