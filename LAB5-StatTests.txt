@@ -155,4 +155,24 @@ Example 2; Let's generate a random sample from a uniform distribution on the int
 > x = runif(50, -1, 1)
 > t.test(x, mu=-2)
 
-Since the p-value is siginificantly smaller than the standard significance level of 0.05....
+Since the p-value is siginificantly smaller than the standard significance level of 0.05, we reject the hypothesis of a mena equal to -2 in favor of the hypothesis of a mean not equal to -2.
+Let's see what we get when testing the expected valueq equal to 0 (mu=0 is the default value):
+> t.test(x);
+
+As expected, the p-value is greater than 0.05, so we do not have basis to reject the null hypothesis.
+Therefore, we can asuume that the expected vlaue of the distribution from which the data comes is -.
+Note: The sample does not come from a normal distribution, but (n=50).
+
+
+
+STUDENT'S t-TEST: TWO INDEPENDENT SAMPLES.
+In the case of the t-Student test for two independent samples, the null hypothesis H0 is: the expected values of the distributions of both samples are the same.
+H_1 is: the expected values of the distributions of the samples are different (or the expected value for the first sample is less than the expected for the second sample, or vice versa).
+
+Exmpl:3/ We are given two samples.
+> x1 = c(50,48,39,53,51,49,50,55,47,53);
+> x2 = c(46,54,58,49,52,51,58,46);
+- Assuming that both samples come from normal distributions, we want to check whether the expected values of the distributions of both samples are the same. Since the samples have different sizes, they are certainly indepndent samples.
+The standard t-Student test assumes that the variances of the distributions from which the samples come are equal. Therefore, let's check if this is the case.
+We apply the test for equality of variances:
+> var.text(x1, x2);
