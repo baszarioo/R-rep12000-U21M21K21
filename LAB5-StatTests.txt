@@ -176,3 +176,60 @@ Exmpl:3/ We are given two samples.
 The standard t-Student test assumes that the variances of the distributions from which the samples come are equal. Therefore, let's check if this is the case.
 We apply the test for equality of variances:
 > var.text(x1, x2);
+
+
+
+STUDENT'S t-TEST: TWO INDEPENDENT SAMPLES, ADV.
+Here,  we test the hypothesis H_0:= variances of the distributions of the samples are the same against the alternative hypothesis H1:= variances of the distributions of the samples are different.
+Since the p-value is 0.8278 > 0.05, we do not have basis to reject H_0.
+Therefore, we apply the t-Student test for samples with equal variance:
+> t.test(x1,x2,var.equal=TRUE)
+
+The obrained p-value is 0.3146 > 0.05 so we do not have reason to believe that the means of both distributions are different.
+If it turned out that in the test for equailty of variances, we rejected the null hypothesis, we would perform the Student's t-test for two samples using the command:
+ > t.test(x1,x2)
+ # which means var.equal =FALSE is the default option.
+
+ Note: With a small sample size in this example, the assumption of normality of distributions is necessary (nizebędne.)
+
+
+
+STUDENT'S t-TEST: TWO DEPENDENT SAMPLES,
+4th Example: We have two sets of data of equal size, representing the weights of individuals before and after using a weight loss product. We want to check if this product is effective.
+> y1=c(65, 79, 103, 64, 78, 80, 66, 97, 104, 67);
+> y2=c(64, 76, 100, 66, 77, 84, 64, 96, 110, 60);
+
+Firstly, we need to assume the normality of the distributions from which the samples come. We have two samples of the same size. It is stated that the first sample represents the weights of indiviudals before treatment, and the second represents the weights of the same individuals after treatment. Therefore, these are dependent samples, or in other words, paired samples.
+First, we check if the samples come from distributions with equal variances:
+ > var.test(y1, y2);
+
+Since the p-value is 0.7857 > 0.05, we have no basis to believe that the variances of the samples are significantly different. Next, we perform the Student's t-test for dependent samples with equal variances.
+The product is considered effective if the weiht of individuals after treatment has decreased.
+
+
+
+STUDENT'S T-TEST: TWO DEPENDENT SAMPLES, cont.
+Therefore, H0: the expected values of the distributions from which the samples come are the same (the treatment is not effective),
+H1: The expected value of the distribution for the first sample (before) is greater than the expected vlaue of the distribution for the second sample (after) [the treatment is effective].
+> t.test(y1, y2, var.equal=TRUE, paired=TRUE, alternative = "g");
+or ||
+> t.test(y2, y1, var.equal=TRUE, paired=TRUE, alternative="1");
+
+Since the p-value is 0.3124 > 0.05, we have no basis to reject H_0.
+Unfortunately, we conclude that the treatmen is not effective enough for the average weight before treatment to be significantly greater than the average weight after treatment.
+
+Note: The Student's t-test for two dependent samples is equivalent to the Student's t-test for a single sample, which is the difference between the values of both samples.
+
+
+
+//REFERRING TO THE RESULTS OF A TEST:
+Note: With a small quantity of samples in this example, the assumption of normality of distributions is necessary.
+Every test in R provides us with specific information that we can refer to using the appropriate variable name. For example:
+ > result = t.test(x1, x2, var.equal=TRUE);
+
+The following information is available to us:
+ > result[];
+ > result$p.value;
+ > result$alternative;
+ > result$data.name;
+//////////////////////////////////////////////////////////////////////////////////
