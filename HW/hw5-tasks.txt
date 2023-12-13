@@ -1,0 +1,29 @@
+R.1)
+The number of tickets sold by XXX on successive Sundays in May and June is presented in the table.
+Week number: 1 2 3 4 5 6 7 8
+Number of tickets sold (in thousands): 2.9 3.3 3.2 3.2 3.2 3.0 2.9 3.1
+Based on these data. at a significance level of (alpha)=0.1, test the hypothesis that the mean number of tickets sold on Sundays is equalt to 3.2 thousand, against the alternative hypothesis that the mean of tickets sold is:
+a) less than 3.2 thousand,
+b) different from 3.2 thousand,
+- assuming that the number of tickets sold follows a normal distribution.
+
+R.2)
+On matchboxes, it is written "on average 64 matches." In the file matches.txt, there are data regarding the quantity of matches in 1000randomly selected boxes. Based on this data, verify at a significance level of alpha=0.05, the hypothesis H0: /mu=64 against the alternative hypothesis H1: /mu>64.
+
+R.3)
+The manufacturer of soap flakes has put forward the hypothesis that the degree of fabric washing with soap flakes is higher than the degree of washing with laundry detergent. To test this hypothesis, measurements were taken on the degree of washing for 10 fabric samples washed with soap flakes, obtaining the following results in percentages: 74.4, 75.1, 73.0, 72.8, 76.2, 74.6, 76.0, 73.4, 72.9, 71.6. 
+Additionally, measurements were taken for 7 fabic samples washed with laundry detergent, obtaining results of 56.8, 57.8, 54.6, 59.0, 57.1, 58.2, 57.6. 
+Assuming that the degree of fabric washing follows a normal distribution and knowing that the test for equality of variances performed on the above samples did not allow for the rejection of the null hypothesis at a significance level of alpha = 0.05, verify the hypothesis put forward by the manufacturer.
+
+R.4)
+The average speeds of trams (in km/h) calculated for the measured speeds of 200 trams on Wednesday and for 120 trams on SUnday are found in the files "trams Wednesday.txt" and "trams Sunday.txt". Based on the available data, verify at a significance level of alpha=0.05 the hypothesis that the average speed of trams on Wednesday is less than on Sunday.
+
+R.5) 
+Blood pressure was measured among a randomly selected group of patients with a certain disease before and after administering the same medication to each of the study participants. The following reslts were obtained:
+Patient No': 1 2 3 4 5 6 7 8
+Pressure Before: 210 180 260 270 190 250 180 200
+Pressure After: 180 160 220 260 200 230 180 190
+At a significance level of alpha=0.05, verify the hypothesis that the administered medication does not cause a change in blood presusre in patients, against the alternative hypothesis that the average blood pressure before administering the drug is higher than after its administration, knowing that arterial blood pressure(ciśnienie tętnicze) follows a normal distribution.
+
+R.6):
+During a survey conducted(przeprowadzony) by a social opinion research institute, out of 1100 surveyed adult Poles, 1090 responded that they did not read any books in the past month.  while the ramaining respondents confirmed that they read at least one book. The data containing responses to the posed_question are in the file "survey.txt". Based on this information, at a significance level of 0.01, test the hypothesis that the percentage of adult Poles who did not read any books in the past month is 99%, against the alternative hypothesis that this percentage is different.
