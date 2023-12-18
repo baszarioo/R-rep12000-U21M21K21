@@ -175,7 +175,7 @@ Exmpl:3/ We are given two samples.
 - Assuming that both samples come from normal distributions, we want to check whether the expected values of the distributions of both samples are the same. Since the samples have different sizes, they are certainly indepndent samples.
 The standard t-Student test assumes that the variances of the distributions from which the samples come are equal. Therefore, let's check if this is the case.
 We apply the test for equality of variances:
-> var.text(x1, x2);
+> var.test(x1, x2);
 
 
 
