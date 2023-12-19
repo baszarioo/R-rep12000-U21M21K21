@@ -1,0 +1,25 @@
+//Compatibility_Tests//;
+These are tests that check the compatibility of the sample distribution with a certain establishedor theoretical distribution. Popular tests in R include the:
+ - Chi-square test, which can be used to test both discrete and absolutely continuous distributions, but is better suited for testingg discrete distributions.
+ - The Kolmogorov-Smirnov test is used to test absolutely continuous distributions.
+Additionally in R, we have test available to test the compatibility of the sample distribution with a normal distribution, such as the Shapiro-Wilk's test.
+
+
+== CHI-SQUARE GOODNESS-OF-FIT TEST: ==
+This test is conducted using the 'chisq.test()' function; testis based on the chi-square statistic.
+The null hypothesis states that the distribution from which the sample is drawn is the specified one, and the alternative hypothesis suggests that the distribution is different. -unlike t-student test, there are no different types of alternative hypotheses here/
+To perform this test, you must first prepare the data apopropriately. The observed values from the sample must be grouped into classes (either as a point or interval frequency distribution), so that the observed class frequencies can be compared with the expected frequencies (i.e., frequencies expected under the assumption that the data come from the specified distribution in H0 ).
+NOTE: the test result is considered most reliable when the expected frequencies for each class are not less than 10 (expected frequency is the theoretical number of observations in the class according to the distribution assumed in H0).
+==part2==
+The first argument of the chisq.test() function is usually a frequency table obtained by using the table() function. If no other argument is provided, the function defaults to testing the null hypothesis that the distribution is uniform (expected frequencies  for each class are equal). If we do not want to test equal proportions, they should be specified as an additional argument:
+ * p: a vector of probabilities( of the same size as the number of different values in the sample). By default, this is a vector of probabilities for a uniform distribution, meaning each class has an equal probability of 1/k, where k is the number of classes.
+ * rescale.p=TRUE if the components of the probability vector p do not sum to 1 and need to be rescaled (default is FALSE).
+==example==
+Example. Let's conduct a chi-square goodness-of-fit test with a Poisson distribution for data from the file "dane.csv." We start by loading the file into R:
+> data = read.table("dane.csv", sep=";")
+The Poisson distribution is a family of distributions indexed by a positive parameter λ. Here arises the first issue: the chi-square goodness-of-fit test checks conformity with a specific distribution, not a family. To specify the Poisson distribution, we need to choose the parameter λ. Since λ is unknown, we use its estimator as λ. As the expected value for the Poisson distribution is λ, a good estimator for the parameter λ is the sample mean:
+> lambda = mean(data$x) # Estimating λ with the sample mean
+Now, let's see how many different values are present in the sample:
+> table_result = table(data)
+
+..
