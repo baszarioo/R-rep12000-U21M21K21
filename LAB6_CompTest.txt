@@ -21,5 +21,39 @@ The Poisson distribution is a family of distributions indexed by a positive para
 > lambda = mean(data$x) # Estimating λ with the sample mean
 Now, let's see how many different values are present in the sample:
 > table_result = table(data)
+==example continuum==
+Here we encounter a second problem: a random variable with a Poisson distribution can take any non-negative integer value, butr in our sample only values 0,1,2,3,4,5 occur. What should we do?
+Let's examine the probabilities of taking values 0,1,2,3,4,5 in the case of a Poisson distributino with parameter (lambd)=1.7;
+> prob=c() # create a vector of probabilites for Poisson distribution
+> for (i in 0:5) { prob[i+1]=dpois(i,1) }
+> sum(prob);
+--We see that the sum of these six probabilities is 0.9920006, which is almost one. Therefore, it can be approximately assumed that for this distribution, the remaining values (6,7,8,...) are not taken. Hence, we apply the chi-square goodness-of-fit fit test:
+> chisq(.test(t, p=prob, rescale.p=TRUE))
 
-..
+
+== KOLMOGOROV-SMIRNOV TEST ==
+We obtain a p-value equal to 0.644. Therefore we conclude that there is no evidence to suggest that the null hypothesis is not true, meaning there is consistency between the data and a Poisson distribution.
+Note: The probability vector must be explicitly specified by using (p=).
+The " ks.test() " function allows for conducting a one sample or two-sample kolmogorov-smirnov test for distributional equality. The first argument of the function is a vector containing the sample, and the subsequent aruments are:
+ - a character string specifying the cumulative distribution function of the tested absolutely continuous distribution = in the case of a one-sample test, or a vector with the second sample if we are testing the
+                equality of distributions, between two samples.
+ - alternative: two.sided / less / greater = specifies the alternative hypothesis. (default: two-sided)
+==one-sample: test example==
+* exact= TRUE(default) or FALSE - a logical value specifying whether the exact p-value of the test should be
+        calculated (option unavailable for one-sided two-sample tests or when tere are ties, i.e., identical values in the sample).
+Note: I nthe case of absolutely continuous distributions, the presence of ties can be concerning (often arising from the precision of rounding numbers) and may significantly influence the test result!
+Example: Let's compare the fit of a randomly generated sample from a normal distribution N(1,1) first with a uniform distribution and then with a normal distribution:
+> sample = rnorm(50, mean=1);
+> ks.test(sample, punif, min(sample), max(sample));
+> ks.test(sample, pnorm, mean(sample));
+Note: In the first case, we specify the tested uniform(jednostajny) distribution as the distribution over the interval (min(sample), max(sample));
+It's considered mentioning that the endpoints of the interval are parameters of the uniform distribution, and the selected values min(sample) and max(sample) serve as estimates for these endpoints. In the second case, we specify the tested normal distribution by selecting the sample mean as an estimate for the expected value (after all, we assume that we do not know the distribution from which the sample comes).
+The result of testing the sample distribution as uniform: the p-value is very samll, and we should reject the null hypothesis of conformity ot the uniform distribution, although for some significance levels, the null hypothesis may not be rejected due to the small sample size.
+    However, in testing the normality of the distribution, the result is more decisive(zdecydow.): the p-value is large, and we should not reject the null hypothesis conformity to the normal distribution.
+==Cumulative Distribution Function (CDF) plots of K-S test==
+The Kolmogorov-Smirnov Test is base on a statistic that relies on the distance between the empirical cumulative distribution function (ECDF) of the sample and the theoretical cumulative distribution function.
+Let's examine how the corresponding CDF plots look:
+> plot.ecdf(sample)
+> curve(pnorm(x, mean(sample)), add=TRUE, col="red");
+> curve(punif(x, min(sample), max(sample)), add=TRUE, col="blue");
+ The conclusion is evident: the difference between the empirical cumulative distribtuiuon function of the sample and the cumulative distribution function of the uniform distribution is large, but when compared to the cumulative distribution function of the normal distribution, this difference is small.
