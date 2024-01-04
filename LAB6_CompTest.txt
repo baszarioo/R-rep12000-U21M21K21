@@ -57,3 +57,50 @@ Let's examine how the corresponding CDF plots look:
 > curve(pnorm(x, mean(sample)), add=TRUE, col="red");
 > curve(punif(x, min(sample), max(sample)), add=TRUE, col="blue");
  The conclusion is evident: the difference between the empirical cumulative distribtuiuon function of the sample and the cumulative distribution function of the uniform distribution is large, but when compared to the cumulative distribution function of the normal distribution, this difference is small.
+
+==Two-Sample Kolmogorov-Smirnov Test: Example==
+Example: Let's compare the distribution agreementof reandomly generated samples from a uniform distribution U(0, 10) and an exponential standard distribution E(1):
+> x = runif(20, min=0, max=10)
+> y = rexp(30)
+> ks.test(x,y)
+A very small p-value indicates that the samples do not come from the same distributions (rejecting the null hypothesis of equality of sample distrtibutions), which could have been expected. Let's look at completely different empirical cumulative distrtibution function plots:
+> plot.ecdf(x, col="red");
+> plot.ecdf(y, col="blue", add=TRUE);
+==2-Sample K-S Test: Example 'One sided alternatives'==
+In the previous example, it can be observed that the empirical cumulative distribution function of sample x lies below the empirical cumulative distribution function of sample y. In such a case, we can conduct the K-S test with one-sided alternatives. Let's first test the null hypothesios of equality between the distributions of x and y against the alternative hypothesis stating that the distribution function of x is not less (lies above) than the distribution function of y (x is stochastically less than y):
+> ks.test(x,y,alternative="g");
+We obtained a p-value significant enough that we cannot reject the null hypothesis of equality between the distributions of x and y.
+Now, let's test the null hypothesis of equality between the distributions of x and y against the alternative hypothesis stating that the distribution function of y(x is stochasitacally greater [without any tendence/ ruled by a circumstance] than y).
+> ks.test(x,y,alternative="l");
+The obtained p-value is small enough to reject the hypothesis of equality of distributions in favor of one stating that the distribution function of x is smallet than the distribution function of y.
+
+==Shapiro-Wilk test==
+This test is a fundamental test for normality conformity.
+We conduct this test using the shapiro.test() function. Examples:
+> x =rgamma(50,3,3);
+> sapiro.test(x);
+As expected, the p-value is small enough to reject the null hypothesi, idnicating that sample x does not come from a normal distribution.
+> y =rnorm(20,3,2);
+> shapiro.test(y);
+In this case, there is no doubt - the test result does not allow us to reject the null hypothesis (p-value is large). Therefore, we accept that the distribution from which sample y is drawn - is normal.
+
+==Other Tests of Normaliy - nortest package==
+In the R environment, many other tests are available to assess normality conformity, some of which are modifications of the Kolmogorov-Smirnov test. These tests can be found in the nortest package:
+- Anderson-Darling test: function ad.test(),
+- Cramer-Von Mises test: function cvm.test(),
+- Lilliefors test: function lillie.test() [this is a K-S test with Lilliefors correction],
+- Pearson's chi-square test for normality: function pearson.test(),
+- Shapiro-Francia test: function sf.test()
+
+==How to check the Normality of Distribution?==
+General recommendations for checking the normality of a sample distribution are as follows:
+    1. Conduct basic statistical analysis: calculate skewness (should be close to 0) and kurtosis (should be close to 3).
+    2. Create a histogram, boxplot, and quantile-quantile plot.
+If the sample siez is not very large (below 5000), use the Shapiro-Wilk test.
+If the number of observations is +5000, use the Anderson-Darling test (or the K-S test with Lilliefors correction).
+
+== sttmnts On Normality Testing ==
+It's important to note that no test can directly confirm that data comes from a normal distribution! A test is only able to indicate when data deviates significantly from a normal distribution, and in such cases, the null hypothesis of normality should be rejected.
+Examples: When the sample size is small, even substantial deviations(duże odchylenia) from normality may go undetected.
+> x = rbinom(10,5,0.6);
+Here, we generated a sample from a binomial distribution(rozklad dwumianowy), which is discrete distribution and is not close to a normal distribution in any way. Let's conduct a test for
