@@ -103,4 +103,23 @@ If the number of observations is +5000, use the Anderson-Darling test (or the K-
 It's important to note that no test can directly confirm that data comes from a normal distribution! A test is only able to indicate when data deviates significantly from a normal distribution, and in such cases, the null hypothesis of normality should be rejected.
 Examples: When the sample size is small, even substantial deviations(duże odchylenia) from normality may go undetected.
 > x = rbinom(10,5,0.6);
-Here, we generated a sample from a binomial distribution(rozklad dwumianowy), which is discrete distribution and is not close to a normal distribution in any way. Let's conduct a test for
+Here, we generated a sample from a binomial distribution(rozklad dwumianowy), which is discrete distribution and is not close to a normal distribution in any way. Let's conduct a test for the normality of the sample distribution:
+> shapiro.test(x);
+The result indicates that we have no grounds to reject the null hypothesis of the normalityof the sample distribution!
+== c.d Another example ==
+>x=rlnorm(20,0,0.4);
+we generated a sample from a log-normal distribution, which is not a normal distribution. The normality test:
+> shapiro.test(x);
+#once again indicates that we have no grounds to reject the null hypothesis of the normality of the sample distribution.
+Example:In the case of large samples, even a small deviation from normality can lead to rejecting tthe null hypothesis of normality. Let's install the nortest' package:
+>install.packages("nortest");
+>library(nortest);
+Let's generate a very large sample of size 500k from a Student's t-distribution with 200 degrees of freedom.
+> x = rt(500000, 200);
+== c.d ==
+A studnet's t-distribution with such degrees of freedom is indistinguishable(nieodroznialny) from a normal distribution. To confirm these words, one can refer to the histogram or quantile-quantile plot:
+> hist(x);
+> qqnorm(x)
+#However, let's check the result of the normality test for the sample( using, for example, the Anderson-Darling test, as the sample size is very large):
+> ad.test(x);
+However, a small p-value suggests rejecting the null hypothesis of normality for the sample distribution...
